@@ -29,7 +29,18 @@ chip disappears, replaced by the real value.
 | Belstaff and Ben X cards | `⟨show⟩`, `⟨city⟩`, `⟨year⟩` |
 | Exhibition and retail cards | `⟨CLIENT⟩`, `⟨BRAND⟩`, `⟨mall⟩`, `⟨city⟩` |
 | Five museum cards | `⟨name of museum⟩` for each city |
-| Client logo wall | five real logo files to replace `src/components/ui/logo-wall.tsx` marks |
+
+## Client logo wall — filled in
+
+The home page logo wall now carries five real client marks pulled from each
+company's own site into `public/clients/`: Microlit, SSS Defence, Royal Canin,
+Schiebel and Pragati Packaging.
+
+Confirm you have permission to use each mark, and swap in official brand-kit
+files where a client supplies higher-resolution artwork. Note the SSS Defence
+file is the white-on-transparent variant from their header; if a dark version
+is available it will hold up better if the monochrome treatment is ever
+dropped.
 
 ## Company history
 
