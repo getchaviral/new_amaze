@@ -1,0 +1,388 @@
+@import "tailwindcss";
+
+/* ------------------------------------------------------------------
+   Amaze Expo — design tokens
+   Brand: crimson + gold on ink & cream. Type: Inter (brand face).
+   ------------------------------------------------------------------ */
+
+@theme {
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system,
+    "Segoe UI", sans-serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, "SFMono-Regular", monospace;
+
+  /* Crimson — primary brand */
+  --color-brand: #b22234;
+  --color-brand-deep: #7a1222;
+  --color-brand-ink: #4f0c17;
+  --color-brand-tint: #fdecee;
+
+  /* Gold — accent, never body copy on light ground */
+  --color-gold: #d4a037;
+  --color-gold-deep: #8a6a1f;
+  --color-gold-ink: #6b4e16;
+  --color-gold-wash: #f3eee3;
+
+  /* Neutrals */
+  --color-ink: #111827;
+  --color-ink-soft: #374151;
+  --color-ink-mute: #4b5563;
+  --color-cream: #faf8f3;
+  --color-line: #e7e2d6;
+  --color-line-strong: #d6d0c2;
+  --color-night: #0b0b0b;
+  --color-slate-deep: #1f2937;
+  --color-mist: #d1d5db;
+  --color-mist-soft: #9ca3af;
+  --color-whatsapp: #25d366;
+
+  /* Type ramp */
+  --text-display: 4.25rem;
+  --text-display--line-height: 1.02;
+  --text-display--letter-spacing: -0.03em;
+  --text-display--font-weight: 800;
+
+  --text-lead: 1.25rem;
+  --text-lead--line-height: 1.6;
+
+  /* Radii */
+  --radius-card: 20px;
+  --radius-panel: 26px;
+
+  /* Elevation */
+  --shadow-card: 0 1px 2px rgb(17 24 39 / 0.04), 0 12px 32px -12px rgb(17 24 39 / 0.12);
+  --shadow-lift: 0 2px 4px rgb(17 24 39 / 0.05), 0 24px 56px -20px rgb(17 24 39 / 0.22);
+}
+
+/* ------------------------------------------------------------------
+   Base
+   ------------------------------------------------------------------ */
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  body {
+    background: var(--color-cream);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-feature-settings: "cv05", "ss01";
+    text-rendering: optimizeLegibility;
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--color-brand);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  ::selection {
+    background: var(--color-brand);
+    color: #fff;
+  }
+}
+
+/* ------------------------------------------------------------------
+   Components
+   ------------------------------------------------------------------ */
+
+@layer components {
+  /* Page gutter. 1280 max, matching the design spec. */
+  .shell {
+    width: 100%;
+    max-width: 1280px;
+    margin-inline: auto;
+    padding-inline: 1.25rem;
+  }
+
+  @media (width >= 48rem) {
+    .shell {
+      padding-inline: 2rem;
+    }
+  }
+
+  /* Eyebrow / kicker above a heading */
+  .eyebrow {
+    font-size: 0.8125rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+
+  /* ---- Buttons ---- */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    min-height: 48px;
+    padding: 0.75rem 1.5rem;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1.2;
+    text-align: center;
+    text-decoration: none;
+    border: 2px solid transparent;
+    cursor: pointer;
+    transition:
+      background-color 150ms ease,
+      color 150ms ease,
+      border-color 150ms ease,
+      transform 150ms ease;
+  }
+
+  .btn:active {
+    transform: translateY(1px);
+  }
+
+  .btn-primary {
+    background: var(--color-brand);
+    color: #fff;
+    border-color: var(--color-brand);
+  }
+
+  .btn-primary:hover {
+    background: var(--color-brand-deep);
+    border-color: var(--color-brand-deep);
+  }
+
+  .btn-onDark {
+    background: #fff;
+    color: var(--color-brand);
+    border-color: #fff;
+  }
+
+  .btn-onDark:hover {
+    background: var(--color-gold-wash);
+    border-color: var(--color-gold-wash);
+  }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--color-brand);
+    border-color: var(--color-brand);
+  }
+
+  .btn-outline:hover {
+    background: var(--color-brand);
+    color: #fff;
+  }
+
+  .btn-outlineGold {
+    background: transparent;
+    color: inherit;
+    border-color: var(--color-gold);
+  }
+
+  .btn-outlineGold:hover {
+    background: var(--color-gold);
+    color: var(--color-night);
+  }
+
+  .btn-ghost {
+    background: transparent;
+    color: inherit;
+    border-color: transparent;
+  }
+
+  /* ---- Choice pills (generator, filters, quiz) ---- */
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    padding: 0.5rem 1.125rem;
+    border-radius: 999px;
+    border: 2px solid var(--color-line);
+    background: #fff;
+    color: var(--color-ink);
+    font-size: 0.9375rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition:
+      background-color 140ms ease,
+      border-color 140ms ease,
+      color 140ms ease;
+  }
+
+  .pill:hover {
+    border-color: var(--color-brand);
+    color: var(--color-brand);
+  }
+
+  .pill[aria-pressed="true"],
+  .pill[aria-selected="true"] {
+    background: var(--color-brand);
+    border-color: var(--color-brand);
+    color: #fff;
+  }
+
+  .pill[aria-pressed="true"]:hover,
+  .pill[aria-selected="true"]:hover {
+    background: var(--color-brand-deep);
+    border-color: var(--color-brand-deep);
+    color: #fff;
+  }
+
+  /* Pill set that sits on an ink ground */
+  .pill-dark {
+    background: transparent;
+    border-color: var(--color-slate-deep);
+    color: #f9fafb;
+  }
+
+  .pill-dark:hover {
+    border-color: var(--color-gold);
+    color: var(--color-gold);
+  }
+
+  .pill-dark[aria-selected="true"] {
+    background: var(--color-brand);
+    border-color: var(--color-brand);
+    color: #fff;
+  }
+
+  /* ---- Cards & panels ---- */
+  .card {
+    background: #fff;
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius-card);
+  }
+
+  .card-quiet {
+    background: var(--color-cream);
+    border: 1px solid var(--color-line);
+    border-radius: 16px;
+  }
+
+  /* ---- Designed media surface -------------------------------
+     Replaces the prototype's dashed photo boxes: a warm hatched
+     field, a corner registration mark and a caption chip. The
+     `data-slot` caption still names the photograph to supply. */
+  .media {
+    position: relative;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    border-radius: 16px;
+    background-color: var(--color-gold-wash);
+    background-image:
+      repeating-linear-gradient(
+        135deg,
+        rgb(138 106 31 / 0.09) 0 1px,
+        transparent 1px 11px
+      ),
+      radial-gradient(120% 90% at 20% 0%, rgb(212 160 55 / 0.22), transparent 62%);
+  }
+
+  .media-dark {
+    background-color: var(--color-slate-deep);
+    background-image:
+      repeating-linear-gradient(
+        135deg,
+        rgb(212 160 55 / 0.14) 0 1px,
+        transparent 1px 11px
+      ),
+      radial-gradient(120% 90% at 20% 0%, rgb(212 160 55 / 0.2), transparent 62%);
+  }
+
+  /* corner registration ticks */
+  .media::before,
+  .media::after {
+    content: "";
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    border: 2px solid rgb(138 106 31 / 0.45);
+  }
+
+  .media::before {
+    top: 12px;
+    left: 12px;
+    border-right: 0;
+    border-bottom: 0;
+  }
+
+  .media::after {
+    right: 12px;
+    bottom: 12px;
+    border-left: 0;
+    border-top: 0;
+  }
+
+  .media-dark::before,
+  .media-dark::after {
+    border-color: rgb(212 160 55 / 0.55);
+  }
+
+  /* ---- A fact that still needs client input ---------------- */
+  .pending {
+    display: inline-block;
+    padding: 0 0.35em;
+    border-radius: 5px;
+    background: rgb(212 160 55 / 0.16);
+    box-shadow: inset 0 -1px 0 rgb(138 106 31 / 0.5);
+    color: inherit;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  .pending-dark {
+    background: rgb(212 160 55 / 0.2);
+    box-shadow: inset 0 -1px 0 rgb(212 160 55 / 0.7);
+    color: var(--color-gold);
+  }
+
+  /* ---- Form controls ---- */
+  .field {
+    display: block;
+    width: 100%;
+    min-height: 48px;
+    padding: 0.75rem 0.875rem;
+    border: 1px solid var(--color-line-strong);
+    border-radius: 10px;
+    background: #fff;
+    color: var(--color-ink);
+    font-size: 0.9375rem;
+    font-weight: 500;
+  }
+
+  .field::placeholder {
+    color: var(--color-mist-soft);
+  }
+
+  .field:hover {
+    border-color: var(--color-ink-mute);
+  }
+
+  .field-label {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-ink);
+  }
+
+  /* ---- Ruled section head ---- */
+  .rule-top {
+    border-top: 3px solid var(--color-brand);
+  }
+
+  .rule-top-gold {
+    border-top: 3px solid var(--color-gold);
+  }
+}
