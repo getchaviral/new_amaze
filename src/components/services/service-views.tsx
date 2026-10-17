@@ -57,7 +57,7 @@ export function ServicePanel() {
       tabIndex={0}
       className="flex flex-col gap-20"
     >
-      <section className="bg-cream">
+      <section id="pricing" className="bg-cream">
         <div className="shell py-16 sm:py-20">
           <Pricing />
         </div>

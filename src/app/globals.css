@@ -110,6 +110,10 @@
     padding-inline: 1.25rem;
   }
 
+  .header-shell {
+    max-width: 1440px;
+  }
+
   @media (width >= 48rem) {
     .shell {
       padding-inline: 2rem;

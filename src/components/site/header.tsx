@@ -21,7 +21,7 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-line bg-white/95 backdrop-blur">
-      <div className="shell">
+      <div className="shell header-shell">
         <nav aria-label="Main" className="flex min-h-[72px] flex-wrap items-center gap-x-8 gap-y-2 py-3 xl:flex-nowrap xl:gap-x-4">
           <Link
             href="/"
@@ -58,12 +58,6 @@ export function Header() {
           </ul>
 
           <div className="order-2 ml-auto flex items-center gap-3 xl:order-3">
-            <Link
-              href="/contact"
-              className="hidden text-[0.9375rem] font-semibold text-ink no-underline hover:text-brand sm:block"
-            >
-              Sign in
-            </Link>
             <Link href="/#generator" className="btn btn-primary hidden md:inline-flex">
               Generate your AI booth design
             </Link>
