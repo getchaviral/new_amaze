@@ -1,38 +1,107 @@
 "use client";
 
-import Link from "next/link";
-import { useMemo, useState } from "react";
-import { GENERATOR_GROUPS, GOAL_TIPS } from "@/lib/site";
+import Image from "next/image";
+import { useEffect, useState, useSyncExternalStore } from "react";
+import { GENERATOR_GROUPS } from "@/lib/site";
 import { PillGroup } from "@/components/ui/choice";
-import { BoothElevation } from "@/components/art/booth";
+
+import home01 from "@/assets/hero/home01.png";
+import home02 from "@/assets/hero/home02.png";
+import home03 from "@/assets/hero/home03.jpeg";
+import home04 from "@/assets/hero/home04.jpg";
+import home05 from "@/assets/hero/home05.png";
+import home06 from "@/assets/hero/home06.png";
 
 type Key = (typeof GENERATOR_GROUPS)[number]["key"];
 
+/** Built work, cycled beside the four choices. */
+const SLIDES = [
+  {
+    src: home01,
+    alt: "Make in India pavilion with curved blue walls and a lit lion sculpture at an aviation show",
+  },
+  {
+    src: home02,
+    alt: "SSS Defence booth with a black backdrop and illuminated gold circular display cases",
+  },
+  {
+    src: home03,
+    alt: "Alaska belts booth by Vinko Auto Industries in white and red",
+  },
+  {
+    src: home04,
+    alt: "Backlit POSSPOLE reception counter framed in wood with a marigold garland",
+  },
+  {
+    src: home05,
+    alt: "GMR Airports outdoor pavilion with a terminal backdrop and red carpet entrance",
+  },
+  {
+    src: home06,
+    alt: "ben.x eyewear booth with a red, green and blue arch and hexagonal display shelves",
+  },
+];
+
+/** How long each image holds before the next one arrives. */
+const INTERVAL_MS = 3600;
+
+function subscribe(onChange: () => void) {
+  const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+  mq.addEventListener("change", onChange);
+  return () => mq.removeEventListener("change", onChange);
+}
+
+function getSnapshot() {
+  return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+}
+
+function getServerSnapshot() {
+  return false;
+}
+
 /**
- * "Your booth in 60 seconds" — four choices, a live concept card.
+ * "Your booth in 60 seconds" — four choices on the left, a rotating wall of
+ * built work on the right.
  *
- * The generator is client-only by necessity; the summary line and the AMAZE
- * recommendation are derived synchronously so there is no loading state and no
- * flash of empty content.
+ * The choices are held in a plain `useState` object so a change re-renders in
+ * one pass with no loading state. The carousel advances itself every 3.6s but
+ * yields to anyone who hovers or focuses it, and stops entirely under
+ * `prefers-reduced-motion`, where the crossfade is suppressed too rather than
+ * silently swapping images behind the user.
  */
 export function BoothGenerator() {
   const [choices, setChoices] = useState<Record<string, string>>(() =>
     Object.fromEntries(GENERATOR_GROUPS.map((g) => [g.key, g.default])),
   );
-  const [contact, setContact] = useState("");
+  const [active, setActive] = useState(0);
+  const [paused, setPaused] = useState(false);
+  const reducedMotion = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
 
   const set = (key: Key) => (value: string) =>
     setChoices((prev) => ({ ...prev, [key]: value }));
 
-  const summary = useMemo(
-    () => GENERATOR_GROUPS.map((g) => choices[g.key]).join(" · "),
-    [choices],
-  );
-  const tip = GOAL_TIPS[choices.goal] ?? GOAL_TIPS["Generate leads"];
+  useEffect(() => {
+    if (paused || reducedMotion) return;
+
+    const id = window.setInterval(() => {
+      setActive((i) => (i + 1) % SLIDES.length);
+    }, INTERVAL_MS);
+
+    return () => window.clearInterval(id);
+  }, [paused, reducedMotion]);
+
+  const slide = (i: number) => {
+    const isActive = i === active;
+    return [
+      "object-cover transition-[opacity,transform] duration-700 ease-out",
+      isActive ? "scale-100 opacity-100" : "scale-105 opacity-0",
+      reducedMotion ? "transition-none" : "",
+    ].join(" ");
+  };
 
   return (
-    <div className="grid items-start gap-8 lg:grid-cols-[1.15fr_1fr]">
-      {/* inputs */}
+    <div className="grid gap-8 lg:grid-cols-[1.15fr_1fr]">
+      {/* choices */}
       <div className="flex flex-col gap-7 rounded-[22px] bg-white p-6 shadow-card sm:p-8">
         {GENERATOR_GROUPS.map((group) => (
           <PillGroup
@@ -45,39 +114,42 @@ export function BoothGenerator() {
         ))}
       </div>
 
-      {/* concept */}
-      <div className="flex flex-col gap-5 rounded-[22px] bg-ink p-6 text-[#F9FAFB] sm:p-8">
-        <p className="eyebrow text-gold">Your first concept</p>
-
-        <div className="overflow-hidden rounded-[14px] border border-gold/35 bg-slate-deep">
-          <BoothElevation variant="wire" className="w-full" showDimensions={false} />
-        </div>
-
-        <p className="text-[0.9375rem] leading-relaxed text-mist">{summary}</p>
-
-        <p className="text-base leading-relaxed text-[#E5E7EB]">
-          <span className="font-bold text-gold">AMAZE suggests: </span>
-          {tip}
-        </p>
-
-        <div className="mt-1 flex flex-col gap-3 border-t border-white/10 pt-5">
-          <label htmlFor="generator-contact" className="text-sm font-semibold text-[#E5E7EB]">
-            Email or WhatsApp number to unlock 4 more concepts in HD
-          </label>
-          <div className="flex flex-col gap-3 sm:flex-row">
-            <input
-              id="generator-contact"
-              type="text"
-              inputMode="email"
-              autoComplete="email"
-              placeholder="you@company.com or +91…"
-              value={contact}
-              onChange={(e) => setContact(e.target.value)}
-              className="field flex-1"
+      {/* built work, cycling */}
+      <div
+        className="flex flex-col rounded-[22px] bg-white p-3 shadow-card"
+        onMouseEnter={() => setPaused(true)}
+        onMouseLeave={() => setPaused(false)}
+        onFocusCapture={() => setPaused(true)}
+        onBlurCapture={() => setPaused(false)}
+      >
+        <div className="relative min-h-[280px] flex-1 overflow-hidden rounded-[14px] bg-slate-deep">
+          {SLIDES.map((item, i) => (
+            <Image
+              key={item.alt}
+              src={item.src}
+              alt={item.alt}
+              fill
+              sizes="(max-width: 1024px) 100vw, 42vw"
+              priority={i === 0}
+              className={slide(i)}
             />
-            <Link href="/services" className="btn btn-primary shrink-0">
-              Unlock HD concepts
-            </Link>
+          ))}
+
+          <div className="absolute inset-x-0 bottom-0 flex justify-center p-3">
+            <div className="flex items-center gap-1.5 rounded-full bg-ink/55 px-2.5 py-1.5 backdrop-blur-sm">
+              {SLIDES.map((item, i) => (
+                <button
+                  key={item.alt}
+                  type="button"
+                  onClick={() => setActive(i)}
+                  aria-label={`Show image ${i + 1} of ${SLIDES.length}`}
+                  aria-current={i === active}
+                  className={`h-1.5 rounded-full transition-all duration-300 ${
+                    i === active ? "w-5 bg-gold" : "w-1.5 bg-white/55 hover:bg-white"
+                  }`}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </div>
