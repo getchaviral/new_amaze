@@ -9,23 +9,20 @@ import pragati from "@/assets/clients/pragati.png";
 /**
  * Client logo wall.
  *
- * Each mark was pulled from the client's own site and stored locally in
- * `public/clients/` rather than hotlinked — hotlinked logos break whenever a
- * CDN path changes and are frequently blocked by hotlink protection.
+ * Every mark is served in its original brand colours — no filters, no
+ * recolouring. Each was pulled from the client's own site and stored locally
+ * in `src/assets/clients/` rather than hotlinked.
  *
- * They arrive in wildly different treatments: Microlit and SSS Defence are
- * white-on-transparent (invisible on this cream ground), Schiebel is a dark
- * green, Pragati a rainbow and Royal Canin crimson. So every mark is flattened
- * to a single ink tone with `brightness(0)`, which maps any colour — white
- * included — to black while preserving the anti-aliased alpha edge. The result
- * is one consistent wall; hover lifts each back toward its true weight.
+ * `dark` marks ship white-on-transparent, so they only render on a dark ground.
+ * The rest are dark ink or full colour and sit on the cream tile. Every logo
+ * therefore shows its true artwork; only the tile behind it differs.
  */
 const CLIENTS = [
-  { name: "Microlit", src: microlit, alt: "Microlit" },
-  { name: "SSS Defence", src: sssDefence, alt: "SSS Defence" },
-  { name: "Royal Canin", src: royalCanin, alt: "Royal Canin" },
-  { name: "Schiebel", src: schiebel, alt: "Schiebel" },
-  { name: "Pragati Packaging", src: pragati, alt: "Pragati Packaging" },
+  { name: "Microlit", src: microlit, alt: "Microlit", dark: true },
+  { name: "SSS Defence", src: sssDefence, alt: "SSS Defence", dark: true },
+  { name: "Royal Canin", src: royalCanin, alt: "Royal Canin", dark: false },
+  { name: "Schiebel", src: schiebel, alt: "Schiebel", dark: false },
+  { name: "Pragati Packaging", src: pragati, alt: "Pragati Packaging", dark: false },
 ];
 
 export function LogoWall() {
@@ -33,13 +30,17 @@ export function LogoWall() {
     <ul className="grid list-none grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
       {CLIENTS.map((client) => (
         <li key={client.name}>
-          <div className="flex h-[74px] items-center justify-center rounded-xl border border-line bg-cream px-5 transition-colors hover:border-line-strong hover:bg-white">
+          <div
+            className={`flex h-[74px] items-center justify-center rounded-xl border px-5 ${
+              client.dark ? "border-ink bg-ink" : "border-line bg-cream"
+            }`}
+          >
             <Image
               src={client.src}
               alt={client.alt}
               width={240}
               height={74}
-              className="h-auto max-h-9 w-auto max-w-full object-contain opacity-60 [filter:brightness(0)] transition-opacity hover:opacity-90"
+              className="h-auto max-h-9 w-auto max-w-full object-contain"
             />
           </div>
         </li>
