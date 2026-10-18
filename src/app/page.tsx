@@ -11,12 +11,12 @@ import {
   SKILLS,
   STATS,
 } from "@/lib/site";
-import { Band, MediaSlot, PhotoGlyph, PlayGlyph, SectionHead, Stat } from "@/components/ui/kit";
+import { Band, MediaSlot, PhotoGlyph, SectionHead, Stat } from "@/components/ui/kit";
 import { Accordion } from "@/components/ui/accordion";
 import { LogoWall } from "@/components/ui/logo-wall";
 import { BoothGenerator } from "@/components/home/booth-generator";
 import { CompareSlider } from "@/components/art/compare-slider";
-import { BoothElevation } from "@/components/art/booth";
+import { HeroShowcase } from "@/components/home/hero-showcase";
 import { Marked } from "@/components/ui/pending";
 import { FAQ_PAGE, JsonLd } from "@/lib/structured-data";
 
@@ -39,7 +39,6 @@ export default function HomePage() {
       <section className="bg-ink text-[#F9FAFB]">
         <div className="shell grid items-center gap-12 py-16 sm:py-20 lg:grid-cols-[1.05fr_1fr] lg:py-24">
           <div className="flex flex-col gap-6">
-            <p className="eyebrow text-gold">Your AI exhibition team</p>
             <h1 className="text-[2.5rem] leading-[1.04] font-extrabold tracking-tight sm:text-display">
               AI exhibition booth design, from brief to built booth
             </h1>
@@ -53,7 +52,7 @@ export default function HomePage() {
                 Generate your AI booth design
               </Link>
               <Link href="/#demo" className="btn btn-outlineGold">
-                Watch the 90-second demo
+                See booth examples
               </Link>
             </div>
             <p className="text-[0.9375rem] text-mist">
@@ -61,21 +60,7 @@ export default function HomePage() {
             </p>
           </div>
 
-          <div
-            id="demo"
-            className="overflow-hidden rounded-panel border border-gold/30 bg-slate-deep p-4 scroll-mt-24"
-          >
-            <div className="mb-3 flex items-center gap-2.5 px-1">
-              <PlayGlyph size={22} />
-              <p className="text-xs font-bold tracking-[0.14em] text-gold uppercase">
-                Hero loop · sketch → render → built booth
-              </p>
-            </div>
-            <BoothElevation variant="built" className="w-full" />
-            <p className="mt-3 px-1 pb-1 text-[0.8125rem] text-mist">
-              Ten seconds, muted and looping. Poster frame and captions ship with the video.
-            </p>
-          </div>
+          <HeroShowcase />
         </div>
       </section>
 
@@ -283,22 +268,6 @@ export default function HomePage() {
         </div>
       </Band>
 
-      {/* ---------------------------------------------------- CTA band */}
-      <section className="bg-brand text-white">
-        <div className="shell flex flex-col items-start justify-between gap-6 py-14 lg:flex-row lg:items-center">
-          <h2 className="m-0 max-w-2xl text-[1.875rem] leading-[1.2] font-extrabold tracking-tight sm:text-[2.25rem]">
-            Your next show is closer than you think
-          </h2>
-          <div className="flex flex-wrap gap-3">
-            <Link href="/#generator" className="btn btn-onDark">
-              Generate your AI booth design
-            </Link>
-            <Link href="/contact" className="btn btn-outlineGold text-white">
-              Get a build quote
-            </Link>
-          </div>
-        </div>
-      </section>
     </>
   );
 }

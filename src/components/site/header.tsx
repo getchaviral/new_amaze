@@ -1,10 +1,10 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { NAV, SITE } from "@/lib/site";
-import { AmazeMark } from "@/components/art/booth";
 
 export function Header() {
   const pathname = usePathname();
@@ -22,13 +22,22 @@ export function Header() {
   return (
     <header className="sticky top-0 z-50 border-b border-line bg-white/95 backdrop-blur">
       <div className="shell header-shell">
-        <nav aria-label="Main" className="flex min-h-[72px] flex-wrap items-center gap-x-8 gap-y-2 py-3 xl:flex-nowrap xl:gap-x-4">
+        <nav aria-label="Main" className="relative top-1 flex min-h-[72px] translate-x-2 flex-wrap items-center gap-x-8 gap-y-2 py-3 md:translate-x-3 xl:flex-nowrap xl:gap-x-4">
           <Link
             href="/"
             className="flex shrink-0 items-center gap-2.5 rounded-lg text-ink no-underline"
           >
-            <AmazeMark size={40} />
-            <span className="text-lg font-extrabold tracking-[0.14em]">AMAZE EXPO</span>
+            <span className="grid size-16 shrink-0 place-items-center overflow-hidden rounded-xl bg-white p-1.5 ring-1 ring-white/15">
+              <Image
+                src="/amaze-logo.png"
+                alt="AMAZE"
+                width={64}
+                height={56}
+                className="h-full w-full object-contain"
+                priority
+              />
+            </span>
+            <span className="text-lg font-extrabold tracking-[0.08em]">AMAZE EXPO</span>
           </Link>
 
           <ul className="order-3 -mx-1 hidden w-full list-none flex-wrap gap-x-6 gap-y-1 xl:order-2 xl:mx-0 xl:flex xl:w-auto xl:flex-1 xl:flex-nowrap xl:justify-center xl:gap-x-3">
