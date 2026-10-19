@@ -6,20 +6,6 @@ import royalCanin from "@/assets/clients/royalcanin.svg";
 import schiebel from "@/assets/clients/schiebel.png";
 import pragati from "@/assets/clients/pragati.png";
 
-/**
- * Client logo wall. Logos use their original brand artwork and colours.
- *
- * Auto heuristic: if the imported filename includes `white`/`light`/`inverse`,
- * the mark is assumed to be a light/white variant and rendered on a dark tile.
- * Otherwise it is shown on the light cream tile so coloured/dark marks keep
- * good contrast.
- */
-function isLightLogo(src: unknown) {
-  const path =
-    typeof src === "string" ? src : (src && (src as { src?: string }).src) || "";
-  return /white|light|inverse|negative/i.test(path || "");
-}
-
 const CLIENTS = [
   { name: "Microlit", src: microlit, alt: "Microlit" },
   { name: "SSS Defence", src: sssDefence, alt: "SSS Defence" },
@@ -30,20 +16,18 @@ const CLIENTS = [
 
 export function LogoWall() {
   return (
-    <ul className="grid list-none grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
+    <ul className="m-0 grid list-none grid-cols-2 gap-3 p-0 sm:grid-cols-3 lg:grid-cols-5">
       {CLIENTS.map((client) => (
         <li key={client.name}>
           <div
-            className={`flex h-[74px] items-center justify-center rounded-xl border px-5 ${
-              isLightLogo(client.src) ? "border-ink bg-ink" : "border-line bg-cream"
-            }`}
+            className="flex h-[76px] items-center justify-center rounded-2xl border border-line bg-white px-4 shadow-[0_2px_10px_rgba(20,27,43,0.035)] transition-transform duration-200 hover:-translate-y-0.5 sm:h-[84px] sm:px-5"
           >
             <Image
               src={client.src}
               alt={client.alt}
               width={240}
               height={74}
-              className="h-auto max-h-9 w-auto max-w-full object-contain"
+              className="h-auto max-h-9 w-auto max-w-[85%] object-contain sm:max-h-10"
             />
           </div>
         </li>

@@ -34,7 +34,7 @@ export default function ProjectsPage() {
       </Band>
 
       {/* -------------------------------------------- featured case study */}
-      <Band tone="cream" className="!py-8">
+      <Band tone="white" className="!py-8">
         <article className="grid overflow-hidden rounded-[24px] bg-ink text-[#F9FAFB] lg:grid-cols-[1.15fr_1fr]">
           <MediaSlot
             label="Photo gallery · 4 photographs of the booth"
@@ -43,7 +43,7 @@ export default function ProjectsPage() {
             className="min-h-[340px] rounded-none lg:border-r lg:border-gold/25"
             icon={<PlayGlyph size={52} />}
           />
-          <div className="flex flex-col gap-3.5 p-8 sm:p-10">
+          <div className="flex flex-col gap-3.5 p-6 sm:p-8">
             <p className="eyebrow text-gold">Featured case study · Exhibition</p>
             <h2 className="m-0 text-[1.75rem] leading-tight font-extrabold tracking-tight sm:text-[2rem]">
               {FEATURED_PROJECT.headline}
@@ -74,7 +74,7 @@ export default function ProjectsPage() {
 
       {/* ----------------------------------------------- time-lapse + testimonials */}
       <section className="bg-ink text-[#F9FAFB]">
-        <div className="shell flex flex-col gap-8 py-12 sm:py-14">
+        <div className="shell flex flex-col gap-6 py-10 sm:py-12">
           <h2 className="m-0 text-[1.75rem] leading-tight font-extrabold tracking-tight sm:text-[2.25rem]">
             From bare floor to opening day
           </h2>
@@ -108,16 +108,6 @@ export default function ProjectsPage() {
         </div>
       </section>
 
-      <section className="bg-brand text-white">
-        <div className="shell flex flex-col items-start justify-between gap-6 py-10 lg:flex-row lg:items-center">
-          <h2 className="m-0 max-w-2xl text-[1.75rem] leading-[1.2] font-extrabold tracking-tight sm:text-[2rem]">
-            Seen something you like? Get your version in minutes.
-          </h2>
-          <Link href="/#generator" className="btn btn-onDark">
-            Generate your AI booth design
-          </Link>
-        </div>
-      </section>
     </>
   );
 }

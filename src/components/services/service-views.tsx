@@ -1,145 +1,107 @@
 "use client";
 
-import Link from "next/link";
-import { createContext, useContext, useState, type ReactNode } from "react";
-import { MANAGED } from "@/lib/site";
-import { MediaSlot, PhotoGlyph, SectionHead } from "@/components/ui/kit";
-import { Pricing } from "./pricing";
-import { PlanQuiz } from "./plan-quiz";
+import Image from "next/image";
+import { useEffect, useState } from "react";
+import services01 from "@/assets/our_services/services_01.png";
+import services02 from "@/assets/our_services/services_02.png";
+import services03 from "@/assets/our_services/services_03.png";
+import services04 from "@/assets/our_services/services_04.png";
+import services05 from "@/assets/our_services/services_05.png";
+import services06 from "@/assets/our_services/services_06.png";
 
-type View = "ai" | "managed";
+const SHOWCASE = [
+  {
+    src: services01,
+    title: "Microlit",
+    detail: "A bright, product-focused exhibition booth",
+  },
+  {
+    src: services02,
+    title: "Care P",
+    detail: "A welcoming space for healthcare products",
+  },
+  {
+    src: services03,
+    title: "Botanika",
+    detail: "An open, premium experience for property launches",
+  },
+  {
+    src: services04,
+    title: "Sony",
+    detail: "A bold showcase for cameras and imaging",
+  },
+  {
+    src: services05,
+    title: "Pragati Pack",
+    detail: "A product-led booth with space to explore",
+  },
+  {
+    src: services06,
+    title: "SI Group",
+    detail: "A distinctive stand for an international audience",
+  },
+];
 
-const ServiceViewContext = createContext<{ view: View; setView: (v: View) => void }>({
-  view: "ai",
-  setView: () => {},
-});
+export function ServicesShowcase() {
+  const [active, setActive] = useState(0);
 
-/** The toggle. Sits inside the dark hero, as in the design. */
-export function ServiceTabs() {
-  const { view, setView } = useContext(ServiceViewContext);
+  useEffect(() => {
+    const timer = window.setInterval(() => {
+      setActive((current) => (current + 1) % SHOWCASE.length);
+    }, 4500);
+    return () => window.clearInterval(timer);
+  }, []);
 
   return (
-    <div
-      role="tablist"
-      aria-label="Service type"
-      className="inline-flex flex-wrap gap-2 rounded-2xl bg-slate-deep p-1.5"
-    >
-      {(["ai", "managed"] as const).map((key) => (
-        <button
-          key={key}
-          type="button"
-          role="tab"
-          id={`service-tab-${key}`}
-          aria-selected={view === key}
-          aria-controls={`service-panel-${key}`}
-          tabIndex={view === key ? 0 : -1}
-          onClick={() => setView(key)}
-          className={`min-h-12 rounded-xl px-5 text-[0.9375rem] font-bold transition-colors ${
-            view === key ? "bg-brand text-white" : "text-[#F9FAFB] hover:text-gold"
-          }`}
-        >
-          {key === "ai" ? "AI Platform (subscribe)" : "Managed services"}
-        </button>
+    <div className="group relative min-h-[320px] overflow-hidden rounded-[28px] bg-slate-deep shadow-lift sm:aspect-[4/3] sm:min-h-0">
+      {SHOWCASE.map((slide, index) => (
+        <Image
+          key={slide.title}
+          src={slide.src}
+          alt={index === active ? slide.title : ""}
+          aria-hidden={index !== active}
+          fill
+          priority={index === 0}
+          sizes="(max-width: 1024px) 100vw, 60vw"
+          className={`object-cover transition-opacity duration-700 ${index === active ? "opacity-100" : "opacity-0"}`}
+        />
       ))}
-    </div>
-  );
-}
-
-/** Everything below the hero: the active panel's content. */
-export function ServicePanel() {
-  const { view } = useContext(ServiceViewContext);
-
-  return view === "ai" ? (
-    <div
-      id="service-panel-ai"
-      role="tabpanel"
-      aria-labelledby="service-tab-ai"
-      tabIndex={0}
-      className="flex flex-col gap-12"
-    >
-      <section id="pricing" className="bg-cream">
-        <div className="shell py-12 sm:py-14">
-          <Pricing />
-        </div>
-      </section>
-
-      <section className="bg-white">
-        <div className="shell py-12 sm:py-14">
-          <PlanQuiz />
-        </div>
-      </section>
-
-      <section className="bg-ink text-[#F9FAFB]">
-        <div className="shell grid items-center gap-12 py-12 sm:py-14 lg:grid-cols-2">
-          <div className="flex flex-col gap-4">
-            <SectionHead
-              tone="dark"
-              eyebrow="For exhibition organisers"
-              title="Give every exhibitor at your show an AI booth designer"
-              lede="A white-label AMAZE portal with your venue’s rules pre-loaded and a vetted build partner. Better-looking halls for you; a share of build revenue for your show."
-            />
-            <Link href="/contact" className="btn btn-outlineGold mt-2 self-start">
-              Talk to us about a partnership
-            </Link>
-          </div>
-          <MediaSlot
-            label="White-label portal"
-            detail="Screenshot · organiser logo + AMAZE generator"
-            dark
-            className="min-h-[300px]"
-            icon={<PhotoGlyph tone="#D4A037" size={52} />}
-          />
-        </div>
-      </section>
-    </div>
-  ) : (
-    <div
-      id="service-panel-managed"
-      role="tabpanel"
-      aria-labelledby="service-tab-managed"
-      tabIndex={0}
-    >
-      <section className="bg-cream">
-        <div className="shell flex flex-col gap-10 py-12 sm:py-14">
-          <SectionHead title="We design it, build it and run it" />
-          <ul className="m-0 grid list-none gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {MANAGED.map((service) => (
-              <li
-                key={service.name}
-                className="flex flex-col overflow-hidden rounded-[18px] bg-white shadow-card"
-              >
-                <MediaSlot
-                  label={service.photo}
-                  detail="Photograph · 1200×800"
-                  className="h-[200px] rounded-none"
-                  icon={<PhotoGlyph tone="#8A6A1F" />}
-                />
-                <div className="flex flex-col gap-2 p-6">
-                  <h3 className="m-0 text-lg font-bold">{service.name}</h3>
-                  <p className="m-0 text-[0.9375rem] leading-relaxed text-ink-soft">
-                    {service.body}
-                  </p>
-                </div>
-              </li>
+      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-black/10" />
+      <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-4 px-5 pb-5 pt-20 text-white sm:px-7 sm:pb-7">
+        <div className="min-w-0">
+          <p className="mb-3 inline-flex rounded-full border border-white/20 bg-black/55 px-3 py-1.5 text-[0.6875rem] font-bold tracking-[0.16em] text-gold uppercase">
+            Booth showcase {active + 1} / {SHOWCASE.length}
+          </p>
+          <h2 className="m-0 text-xl font-extrabold tracking-tight drop-shadow sm:text-2xl">
+            {SHOWCASE[active].title}
+          </h2>
+          <p className="mt-1.5 text-sm font-medium text-white/80 sm:text-base">
+            {SHOWCASE[active].detail}
+          </p>
+          <div className="mt-4 flex items-center gap-2" role="group" aria-label="Choose a booth image">
+            {SHOWCASE.map((slide, index) => (
+              <button
+                key={slide.title}
+                type="button"
+                onClick={() => setActive(index)}
+                aria-label={`Show booth image ${index + 1}`}
+                aria-pressed={active === index}
+                className={`h-2 rounded-full transition-all ${active === index ? "w-8 bg-gold" : "w-2 bg-white/55 hover:bg-white/85"}`}
+              />
             ))}
-          </ul>
-          <Link href="/contact" className="btn btn-primary self-start">
-            Get a design + build quote
-          </Link>
+          </div>
         </div>
-      </section>
+        <button
+          type="button"
+          onClick={() => setActive((current) => (current + 1) % SHOWCASE.length)}
+          aria-label="Show next booth"
+          className="mb-1 grid size-11 shrink-0 place-items-center rounded-full border border-white/30 bg-black/35 text-white backdrop-blur transition hover:bg-black/60"
+        >
+          <svg viewBox="0 0 24 24" className="size-5" fill="none" aria-hidden="true">
+            <path d="m9 18 6-6-6-6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+        </button>
+      </div>
     </div>
-  );
-}
-
-/** Wraps hero + panels so both share one piece of state. */
-export function ServicesShell({ hero, children }: { hero: ReactNode; children: ReactNode }) {
-  const [view, setView] = useState<View>("ai");
-  return (
-    <ServiceViewContext.Provider value={{ view, setView }}>
-      {hero}
-      {children}
-      <ServicePanel />
-    </ServiceViewContext.Provider>
   );
 }

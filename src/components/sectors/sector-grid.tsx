@@ -11,7 +11,7 @@ export function SectorGrid() {
   const shown = SECTORS.filter((s) => group === "All" || s.group === group);
 
   return (
-    <div className="flex flex-col gap-8">
+    <div className="flex flex-col gap-6">
       <div role="group" aria-label="Filter sectors" className="flex flex-wrap gap-2.5">
         {SECTOR_GROUPS.map((name) => (
           <button

@@ -3,27 +3,50 @@
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useSyncExternalStore } from "react";
 import { NAV, SITE } from "@/lib/site";
+
+const THEME_KEY = "amaze-theme";
+const themeListeners = new Set<() => void>();
+
+/**
+ * The saved theme lives in localStorage, not React, so it is read through
+ * `useSyncExternalStore` rather than copied into state inside an effect — which
+ * would cascade a render on mount. Cross-tab changes arrive via `storage`.
+ */
+function subscribeTheme(onChange: () => void) {
+  themeListeners.add(onChange);
+  const onStorage = (e: StorageEvent) => {
+    if (e.key === THEME_KEY) onChange();
+  };
+  window.addEventListener("storage", onStorage);
+  return () => {
+    themeListeners.delete(onChange);
+    window.removeEventListener("storage", onStorage);
+  };
+}
+
+function readTheme() {
+  return window.localStorage.getItem(THEME_KEY) === "dark";
+}
+
+function writeTheme(isDark: boolean) {
+  window.localStorage.setItem(THEME_KEY, isDark ? "dark" : "light");
+  themeListeners.forEach((listener) => listener());
+}
 
 export function Header() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
-  const [darkMode, setDarkMode] = useState(false);
+  const darkMode = useSyncExternalStore(subscribeTheme, readTheme, () => false);
 
+  // Sync the flag onto <html>. This only touches the DOM — no React state — so
+  // there is no cascading render to warn about.
   useEffect(() => {
-    const savedTheme = window.localStorage.getItem("amaze-theme");
-    const isDark = savedTheme === "dark";
-    document.documentElement.classList.toggle("dark", isDark);
-    setDarkMode(isDark);
-  }, []);
+    document.documentElement.classList.toggle("dark", darkMode);
+  }, [darkMode]);
 
-  const toggleTheme = () => {
-    const nextIsDark = !darkMode;
-    document.documentElement.classList.toggle("dark", nextIsDark);
-    window.localStorage.setItem("amaze-theme", nextIsDark ? "dark" : "light");
-    setDarkMode(nextIsDark);
-  };
+  const toggleTheme = () => writeTheme(!darkMode);
 
   // Escape closes the panel. The panel closes itself on navigation instead —
   // see the mobile nav links below — so no effect is needed for that.

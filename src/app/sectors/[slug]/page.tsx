@@ -74,7 +74,7 @@ export default async function SectorPage({ params }: Params) {
       </Band>
 
       <Band tone="white" className="!py-10">
-        <div className="grid gap-10 lg:grid-cols-[1.2fr_1fr]">
+        <div className="grid gap-6 lg:grid-cols-[1.2fr_1fr]">
           <MediaSlot
             label={`Real ${sector.name.toLowerCase()} booth we built`}
             detail="Photograph · alt text names client, show and city"

@@ -12,7 +12,7 @@ export function ProjectGrid() {
   const shown = PROJECTS.filter((p) => type === "All" || p.type === type);
 
   return (
-    <div className="flex flex-col gap-8">
+    <div className="flex flex-col gap-6">
       <div role="group" aria-label="Filter projects" className="flex flex-wrap gap-2.5">
         {PROJECT_TYPES.map((name) => (
           <button

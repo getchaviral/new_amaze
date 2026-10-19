@@ -36,13 +36,13 @@ export default function SectorsPage() {
         </div>
       </Band>
 
-      <Band tone="cream" className="!pt-6">
+      <Band tone="white" className="!pt-6">
         <SectorGrid />
       </Band>
 
       {/* ------------------------------------------------ show calendar */}
       <section className="bg-ink text-[#F9FAFB]">
-        <div className="shell flex flex-col gap-8 py-12 sm:py-14">
+        <div className="shell flex flex-col gap-6 py-10 sm:py-12">
           <div className="flex flex-col gap-2.5">
             <p className="eyebrow text-gold">Upcoming shows in India</p>
             <h2 className="m-0 text-[1.75rem] leading-tight font-extrabold tracking-tight sm:text-[2.25rem]">

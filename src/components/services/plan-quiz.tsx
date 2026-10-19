@@ -52,8 +52,8 @@ export function PlanQuiz() {
       : why;
 
   return (
-    <div className="grid items-center gap-10 lg:grid-cols-[1.2fr_1fr]">
-      <div className="flex flex-col gap-7">
+    <div className="grid items-center gap-6 lg:grid-cols-[1.2fr_1fr]">
+      <div className="flex flex-col gap-6">
         <div className="flex flex-col gap-2.5">
           <p className="eyebrow text-brand">Not sure?</p>
           <h2 className="m-0 text-[2rem] leading-tight font-extrabold tracking-tight sm:text-[2.25rem]">
@@ -73,7 +73,7 @@ export function PlanQuiz() {
 
       <div
         aria-live="polite"
-        className="flex flex-col justify-center gap-3.5 rounded-[20px] bg-brand p-8 text-white"
+        className="flex flex-col justify-center gap-3.5 rounded-[20px] bg-brand p-6 text-white"
       >
         <p className="eyebrow text-brand-tint">We recommend</p>
         <p className="m-0 text-[2rem] leading-tight font-extrabold">{plan}</p>

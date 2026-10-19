@@ -17,7 +17,7 @@ export function ContactForm() {
   };
 
   return (
-    <div className="flex flex-col gap-10">
+    <div className="flex flex-col gap-6">
       <fieldset className="m-0 flex flex-col gap-4 border-0 p-0">
         <legend className="mb-1 text-[1.5rem] font-extrabold tracking-tight">
           What would you like to do?
@@ -52,10 +52,10 @@ export function ContactForm() {
         </div>
       </fieldset>
 
-      <div className="grid items-start gap-8 lg:grid-cols-[1.5fr_1fr]">
+      <div className="grid items-start gap-6 lg:grid-cols-[1.5fr_1fr]">
         <form
           onSubmit={onSubmit}
-          className="flex flex-col gap-5 rounded-[20px] border border-line bg-white p-7 shadow-card sm:p-8"
+          className="flex flex-col gap-5 rounded-[20px] border border-line bg-white p-6 shadow-card sm:p-6"
         >
           <h2 className="m-0 text-[1.375rem] font-extrabold">{path.form}</h2>
 
@@ -175,7 +175,7 @@ export function ContactForm() {
         </form>
 
         <aside className="flex flex-col gap-5">
-          <div className="flex flex-col gap-2.5 rounded-[20px] bg-ink p-7 text-[#F9FAFB]">
+          <div className="flex flex-col gap-2.5 rounded-[20px] bg-ink p-6 text-[#F9FAFB]">
             <h2 className="m-0 text-xl font-bold">Talk to us directly</h2>
             <p className="m-0 text-base leading-relaxed">
               Jyotsna Pande

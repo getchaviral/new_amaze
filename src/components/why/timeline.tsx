@@ -18,7 +18,7 @@ export function Timeline({ steps }: { steps: readonly Step[] }) {
   const cur = steps[i];
 
   return (
-    <div className="flex flex-col gap-7">
+    <div className="flex flex-col gap-6">
       <div role="tablist" aria-label="Company timeline" className="flex flex-wrap gap-2.5">
         {steps.map((step, index) => (
           <button
@@ -51,7 +51,7 @@ export function Timeline({ steps }: { steps: readonly Step[] }) {
         role="tabpanel"
         aria-labelledby={`timeline-tab-${i}`}
         tabIndex={0}
-        className="grid items-center gap-8 rounded-[20px] bg-cream p-7 sm:p-9 lg:grid-cols-2"
+        className="grid items-center gap-6 rounded-[20px] bg-cream p-6 sm:p-9 lg:grid-cols-2"
       >
         <div className="flex flex-col gap-3">
           <p className="text-[0.9375rem] font-bold text-brand">

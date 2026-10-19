@@ -4,7 +4,7 @@ import { BoothElevation } from "@/components/art/booth";
 export default function NotFound() {
   return (
     <section className="bg-cream">
-      <div className="shell flex flex-col items-center gap-6 py-20 text-center sm:py-28">
+      <div className="shell flex flex-col items-center gap-6 py-12 text-center sm:py-12">
         <p className="eyebrow text-brand">404</p>
         <h1 className="m-0 max-w-2xl text-[2.25rem] leading-[1.08] font-extrabold tracking-tight sm:text-[3rem]">
           This booth isn’t on the floor plan

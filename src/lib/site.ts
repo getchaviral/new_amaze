@@ -26,7 +26,6 @@ export const NAV = [
   { href: "/why-choose-us", label: "Why Choose Us" },
   { href: "/services", label: "Our Services" },
   { href: "/sectors", label: "Industry We Serve" },
-  { href: "/services#pricing", label: "Pricing" },
   { href: "/contact", label: "Contact Us" },
 ] as const;
 
@@ -131,9 +130,54 @@ export const PROCESS = [
 ] as const;
 
 export const HOME_PLANS = [
-  { name: "Exhibitor Pro", badge: "Most popular", price: "⟨PRICE⟩", per: "per month", for: "For brands doing 2–6 shows a year", featured: true },
-  { name: "Agency Studio", badge: "", price: "⟨PRICE⟩", per: "per month", for: "For agencies and stand builders", featured: false },
-  { name: "Enterprise & Organiser", badge: "", price: "Custom", per: "talk to us", for: "For large brands, pavilions and show organisers", featured: false },
+  {
+    name: "AMAZE ONE",
+    badge: "",
+    price: "₹1,199",
+    per: "One-time purchase",
+    for: "For one professional booth concept",
+    details: "1 complete design · up to 5 presentation views",
+    features: ["Booth dimensions & layout", "Brand and logo integration"],
+    cta: "Get AMAZE ONE",
+    href: "/services",
+    featured: false,
+  },
+  {
+    name: "AMAZE 7",
+    badge: "Most popular",
+    price: "₹6,199",
+    per: "₹886 per design · valid 1 month",
+    for: "For exploring multiple concepts and directions",
+    details: "7 complete designs · up to 5 views each",
+    features: ["Multiple creative directions", "Brand and logo integration"],
+    cta: "Get AMAZE 7",
+    href: "/services",
+    featured: true,
+  },
+  {
+    name: "AMAZE 24",
+    badge: "High volume",
+    price: "₹18,199",
+    per: "₹758 per design · valid 3 months",
+    for: "For teams with multiple booth requirements",
+    details: "24 complete designs · up to 5 views each",
+    features: ["Multiple projects and exhibitions", "Team evaluation of concepts"],
+    cta: "Get AMAZE 24",
+    href: "/services",
+    featured: false,
+  },
+  {
+    name: "AMAZE Enterprise",
+    badge: "",
+    price: "Custom",
+    per: "Volume-based · contract pricing",
+    for: "For agencies, stand builders, brands and organisers",
+    details: "White-label experience with your brand",
+    features: ["Multiple users and centralised projects", "Custom workflows and dedicated support"],
+    cta: "Talk to us",
+    href: "/contact",
+    featured: false,
+  },
 ] as const;
 
 export const FAQS = [

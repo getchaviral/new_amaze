@@ -88,6 +88,14 @@ html.dark .btn-onDark {
   color: var(--color-brand);
 }
 
+.service-concept {
+  background: linear-gradient(115deg, #fff4e8 0%, #fcebd9 58%, #f7dfbd 100%);
+}
+
+html.dark .service-concept {
+  background: linear-gradient(115deg, #201a18 0%, #28201b 58%, #302519 100%);
+}
+
 /* ------------------------------------------------------------------
    Base
    ------------------------------------------------------------------ */

@@ -11,8 +11,8 @@ const LEGAL = [
 export function Footer() {
   return (
     <footer className="bg-night text-mist">
-      <div className="shell flex flex-col gap-10 py-16">
-        <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1.2fr_1.2fr]">
+      <div className="shell flex flex-col gap-6 py-12">
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1.2fr_1.2fr]">
           <div className="flex flex-col gap-3">
             <div className="flex items-center gap-2.5">
               <AmazeMark size={38} />

@@ -1,7 +1,10 @@
 "use client";
 
 import { useId, useState } from "react";
+import Image from "next/image";
 import { BoothElevation } from "./booth";
+
+const sssDefenceBooth = "/booth-gallery/sss-defence.png";
 
 /**
  * Drag between the AI concept and the finished booth.
@@ -15,23 +18,30 @@ export function CompareSlider() {
   const id = useId();
 
   return (
-    <div className="flex flex-col gap-4">
+    <div className="flex flex-col gap-2">
       <div
-        className="relative overflow-hidden rounded-[22px] border border-white/10 bg-slate-deep"
-        style={{ aspectRatio: "900 / 520" }}
+        className="relative mx-auto aspect-[4/3] w-full overflow-hidden rounded-[22px] border border-white/10 bg-slate-deep"
+        style={{ width: "min(100%, 104svh)" }}
       >
-        {/* reality — full width underneath */}
+        {/* built booth visualization — full width underneath */}
         <div className="absolute inset-0">
           <BoothElevation variant="built" className="size-full" showDimensions={false} />
         </div>
 
-        {/* concept — clipped from the left */}
+        {/* SSS Defence concept image — clipped from the left */}
         <div
           className="absolute inset-y-0 left-0 overflow-hidden bg-[#3B1218]"
           style={{ width: `${split}%` }}
         >
-          <div className="h-full" style={{ width: `${(100 / split) * 100}%` }}>
-            <BoothElevation variant="wire" className="size-full" showDimensions={false} />
+          <div className="relative h-full" style={{ width: `${(100 / split) * 100}%` }}>
+            <Image
+              src={sssDefenceBooth}
+              alt="SSS Defence booth design concept with illuminated display cases"
+              fill
+              sizes="(max-width: 1024px) 100vw, 80vw"
+              className="object-cover"
+              priority
+            />
           </div>
         </div>
 
@@ -56,8 +66,8 @@ export function CompareSlider() {
         </span>
       </div>
 
-      <div className="flex flex-col gap-2">
-        <label htmlFor={id} className="text-sm font-semibold text-[#E5E7EB]">
+      <div className="mx-auto flex w-full flex-col gap-1.5" style={{ width: "min(100%, 104svh)" }}>
+        <label htmlFor={id} className="text-xs font-semibold text-[#E5E7EB]">
           Compare the concept with the finished booth
         </label>
         <input
@@ -67,11 +77,11 @@ export function CompareSlider() {
           max={95}
           value={split}
           onChange={(e) => setSplit(Number(e.target.value))}
-          className="w-full accent-[#D4A037]"
+          className="h-2 w-[96%] self-center cursor-pointer accent-[#D4A037]"
         />
       </div>
 
-      <p className="text-sm text-mist">
+      <p className="mx-auto mt-1 w-full text-sm text-mist" style={{ width: "min(100%, 104svh)" }}>
         One drawing, two states. Six concept-to-built pairs ship with real photography at
         the same camera angle.
       </p>

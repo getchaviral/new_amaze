@@ -10,7 +10,7 @@ export function Pricing() {
   const [annual, setAnnual] = useState(false);
 
   return (
-    <div className="flex flex-col gap-8">
+    <div className="flex flex-col gap-6">
       <div className="flex flex-col items-start justify-between gap-5 sm:flex-row sm:items-center">
         <h2 className="m-0 text-[2rem] leading-tight font-extrabold tracking-tight sm:text-[2.25rem]">
           AMAZE AI plans
@@ -51,7 +51,7 @@ export function Pricing() {
           return (
             <li
               key={plan.name}
-              className={`flex flex-col gap-3.5 rounded-[20px] p-7 ${
+              className={`flex flex-col gap-3.5 rounded-[20px] p-6 ${
                 featured ? "bg-ink text-[#F9FAFB]" : "card"
               }`}
             >
