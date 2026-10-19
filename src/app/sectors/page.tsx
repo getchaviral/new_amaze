@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { SEO_PAGES, SECTOR_TEMPLATE, SHOWS } from "@/lib/site";
-import { Band, MediaSlot, PhotoGlyph } from "@/components/ui/kit";
+import { SEO_PAGES, SHOWS } from "@/lib/site";
+import { Band } from "@/components/ui/kit";
 import { SectorGrid } from "@/components/sectors/sector-grid";
 import { Marked } from "@/components/ui/pending";
 import { EVENT_SCHEMA, JsonLd } from "@/lib/structured-data";
@@ -40,52 +40,9 @@ export default function SectorsPage() {
         <SectorGrid />
       </Band>
 
-      {/* --------------------------------------- sector page template */}
-      <Band tone="white">
-        <div className="flex flex-col gap-8">
-          <div className="flex flex-col gap-2.5">
-            <p className="eyebrow text-brand">Inside every sector page · /sectors/pharma</p>
-            <h2 className="m-0 text-[1.75rem] leading-tight font-extrabold tracking-tight sm:text-[2.25rem]">
-              Sector pages carry the playbook
-            </h2>
-          </div>
-          <div className="grid gap-8 lg:grid-cols-[1.2fr_1fr]">
-            <MediaSlot
-              label="Real sector booth we built"
-              detail="Photograph · alt text names client, show and city"
-              className="min-h-[300px]"
-              icon={<PhotoGlyph tone="#8A6A1F" size={48} />}
-            />
-            <div className="flex flex-col gap-4">
-              <div className="rounded-[14px] bg-cream p-5">
-                <h3 className="m-0 mb-2 text-[1.0625rem] font-bold">What visitors look for</h3>
-                <p className="m-0 text-[0.9375rem] leading-relaxed text-ink-soft">
-                  {SECTOR_TEMPLATE.whatVisitorsLookFor}
-                </p>
-              </div>
-              <div className="rounded-[14px] bg-cream p-5">
-                <h3 className="m-0 mb-2 text-[1.0625rem] font-bold">The AI’s sector rules</h3>
-                <p className="m-0 text-[0.9375rem] leading-relaxed text-ink-soft">
-                  {SECTOR_TEMPLATE.aiRules}
-                </p>
-              </div>
-              <div className="rounded-[14px] bg-cream p-5">
-                <h3 className="m-0 mb-2 text-[1.0625rem] font-bold">Typical sizes</h3>
-                <p className="m-0 text-[0.9375rem] leading-relaxed text-ink-soft">
-                  <Marked>{SECTOR_TEMPLATE.typicalSizes}</Marked>
-                </p>
-              </div>
-              <Link href="/#generator" className="btn btn-primary self-start">
-                Generate a booth
-              </Link>
-            </div>
-          </div>
-        </div>
-      </Band>
-
       {/* ------------------------------------------------ show calendar */}
       <section className="bg-ink text-[#F9FAFB]">
-        <div className="shell flex flex-col gap-8 py-16 sm:py-20">
+        <div className="shell flex flex-col gap-8 py-12 sm:py-14">
           <div className="flex flex-col gap-2.5">
             <p className="eyebrow text-gold">Upcoming shows in India</p>
             <h2 className="m-0 text-[1.75rem] leading-tight font-extrabold tracking-tight sm:text-[2.25rem]">

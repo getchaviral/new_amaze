@@ -74,7 +74,7 @@ export default function ProjectsPage() {
 
       {/* ----------------------------------------------- time-lapse + testimonials */}
       <section className="bg-ink text-[#F9FAFB]">
-        <div className="shell flex flex-col gap-8 py-16 sm:py-20">
+        <div className="shell flex flex-col gap-8 py-12 sm:py-14">
           <h2 className="m-0 text-[1.75rem] leading-tight font-extrabold tracking-tight sm:text-[2.25rem]">
             From bare floor to opening day
           </h2>
@@ -109,7 +109,7 @@ export default function ProjectsPage() {
       </section>
 
       <section className="bg-brand text-white">
-        <div className="shell flex flex-col items-start justify-between gap-6 py-14 lg:flex-row lg:items-center">
+        <div className="shell flex flex-col items-start justify-between gap-6 py-10 lg:flex-row lg:items-center">
           <h2 className="m-0 max-w-2xl text-[1.75rem] leading-[1.2] font-extrabold tracking-tight sm:text-[2rem]">
             Seen something you like? Get your version in minutes.
           </h2>

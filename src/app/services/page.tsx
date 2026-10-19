@@ -23,7 +23,7 @@ export const metadata: Metadata = {
 function Hero() {
   return (
     <section className="bg-ink text-[#F9FAFB]">
-      <div className="shell flex flex-col gap-6 py-16 sm:py-20">
+      <div className="shell flex flex-col gap-6 py-12 sm:py-14">
         <p className="eyebrow text-gold">Our Services</p>
         <h1 className="m-0 max-w-4xl text-[2.25rem] leading-[1.06] font-extrabold tracking-tight sm:text-[3.25rem]">
           Choose how much of your exhibition the AI runs
@@ -48,7 +48,7 @@ export default function ServicesPage() {
       </ServicesShell>
 
       <section className="bg-white">
-        <div className="shell mx-auto flex max-w-4xl flex-col gap-6 py-16 sm:py-20">
+        <div className="shell mx-auto flex max-w-4xl flex-col gap-6 py-12 sm:py-14">
           <h2 className="m-0 text-[1.75rem] leading-tight font-extrabold tracking-tight sm:text-[2rem]">
             Plans and billing questions
           </h2>

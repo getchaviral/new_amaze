@@ -55,22 +55,22 @@ export function ServicePanel() {
       role="tabpanel"
       aria-labelledby="service-tab-ai"
       tabIndex={0}
-      className="flex flex-col gap-20"
+      className="flex flex-col gap-12"
     >
       <section id="pricing" className="bg-cream">
-        <div className="shell py-16 sm:py-20">
+        <div className="shell py-12 sm:py-14">
           <Pricing />
         </div>
       </section>
 
       <section className="bg-white">
-        <div className="shell py-16 sm:py-20">
+        <div className="shell py-12 sm:py-14">
           <PlanQuiz />
         </div>
       </section>
 
       <section className="bg-ink text-[#F9FAFB]">
-        <div className="shell grid items-center gap-12 py-16 sm:py-20 lg:grid-cols-2">
+        <div className="shell grid items-center gap-12 py-12 sm:py-14 lg:grid-cols-2">
           <div className="flex flex-col gap-4">
             <SectionHead
               tone="dark"
@@ -100,7 +100,7 @@ export function ServicePanel() {
       tabIndex={0}
     >
       <section className="bg-cream">
-        <div className="shell flex flex-col gap-10 py-16 sm:py-20">
+        <div className="shell flex flex-col gap-10 py-12 sm:py-14">
           <SectionHead title="We design it, build it and run it" />
           <ul className="m-0 grid list-none gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {MANAGED.map((service) => (

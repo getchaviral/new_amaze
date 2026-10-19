@@ -186,7 +186,7 @@ export function Band({
   };
   return (
     <section id={id} className={`${tones[tone]} ${outerClassName}`}>
-      <div className={`shell py-16 sm:py-20 lg:py-24 ${className}`}>{children}</div>
+      <div className={`shell py-12 sm:py-14 lg:py-16 ${className}`}>{children}</div>
     </section>
   );
 }

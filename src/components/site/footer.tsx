@@ -1,25 +1,12 @@
 import Link from "next/link";
 import { NAV, SITE } from "@/lib/site";
 import { AmazeMark } from "@/components/art/booth";
-import { Marked } from "@/components/ui/pending";
 
 const LEGAL = [
   { href: "#terms", label: "Terms & Conditions" },
   { href: "#privacy", label: "Privacy Policy" },
   { href: "#refund", label: "Refund Policy" },
 ];
-
-function StarRow() {
-  return (
-    <div className="flex gap-1" aria-hidden="true">
-      {[0, 1, 2, 3, 4].map((i) => (
-        <svg key={i} width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#8A6A1F" strokeWidth="1.6" strokeLinejoin="round">
-          <path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1-5.4-2.9-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z" />
-        </svg>
-      ))}
-    </div>
-  );
-}
 
 export function Footer() {
   return (
@@ -82,12 +69,6 @@ export function Footer() {
                   <path fill="#EA4335" d="M12 4.8c1.7 0 3.2.6 4.4 1.7l3.3-3.3A11.6 11.6 0 0 0 12 0 12 12 0 0 0 1.8 6.1l3.8 3c.9-2.8 3.4-4.3 6.4-4.3z" />
                 </svg>
                 <p className="font-bold text-white">Amaze Expo</p>
-              </div>
-              <div className="mt-2.5 flex items-center gap-2">
-                <StarRow />
-                <p className="text-sm">
-                  <Marked dark>{"⟨rating⟩ · ⟨N⟩ reviews"}</Marked>
-                </p>
               </div>
               <a
                 href="#google-profile"

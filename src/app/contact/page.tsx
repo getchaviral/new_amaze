@@ -23,7 +23,7 @@ export default function ContactPage() {
       <JsonLd data={LOCAL_BUSINESSES} />
 
       <section className="bg-ink text-[#F9FAFB]">
-        <div className="shell flex flex-col gap-4 py-16 sm:py-20">
+        <div className="shell flex flex-col gap-4 py-12 sm:py-14">
           <p className="eyebrow text-gold">Contact Us</p>
           <h1 className="m-0 max-w-3xl text-[2.25rem] leading-[1.06] font-extrabold tracking-tight sm:text-[3.25rem]">
             Tell us about your next show
@@ -34,7 +34,7 @@ export default function ContactPage() {
         </div>
       </section>
 
-      <Band tone="cream" className="!py-14">
+      <Band tone="cream" className="!py-10">
         <ContactForm />
       </Band>
 

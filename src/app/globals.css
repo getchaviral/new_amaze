@@ -53,6 +53,41 @@
   --shadow-lift: 0 2px 4px rgb(17 24 39 / 0.05), 0 24px 56px -20px rgb(17 24 39 / 0.22);
 }
 
+/* User selected dark theme */
+html.dark {
+  color-scheme: dark;
+  --color-white: #161c26;
+  --color-cream: #10151e;
+  --color-ink: #f3f4f6;
+  --color-ink-soft: #d1d5db;
+  --color-ink-mute: #a3adba;
+  --color-line: #303846;
+  --color-line-strong: #46505f;
+  --color-brand-tint: #3b1b24;
+  --color-gold-ink: #e5c270;
+  --color-gold-wash: #342d1b;
+  --shadow-card: 0 1px 2px rgb(0 0 0 / 0.24), 0 12px 32px -12px rgb(0 0 0 / 0.45);
+  --shadow-lift: 0 2px 4px rgb(0 0 0 / 0.28), 0 24px 56px -20px rgb(0 0 0 / 0.6);
+}
+
+/* Preserve dark brand panels while the shared ink text token changes. */
+html.dark .bg-ink {
+  background-color: #111827;
+}
+
+html.dark .card {
+  background-color: var(--color-white);
+}
+
+html.dark .field {
+  background-color: #161c26;
+}
+
+html.dark .btn-onDark {
+  background-color: #f9fafb;
+  color: var(--color-brand);
+}
+
 /* ------------------------------------------------------------------
    Base
    ------------------------------------------------------------------ */
@@ -102,12 +137,12 @@
    ------------------------------------------------------------------ */
 
 @layer components {
-  /* Page gutter. 1280 max, matching the design spec. */
+  /* Shared page width and side gutters. */
   .shell {
     width: 100%;
-    max-width: 1280px;
+    max-width: 1360px;
     margin-inline: auto;
-    padding-inline: 1.25rem;
+    padding-inline: 1rem;
   }
 
   .header-shell {
@@ -116,7 +151,7 @@
 
   @media (width >= 48rem) {
     .shell {
-      padding-inline: 2rem;
+      padding-inline: 1.5rem;
     }
   }
 

@@ -37,7 +37,7 @@ export default function WhyChooseUsPage() {
   return (
     <>
       {/* ---------------------------------------------------------- Hero */}
-      <Band tone="cream" className="!py-16 sm:!py-20">
+      <Band tone="cream" className="!py-12 sm:!py-14">
         <div className="grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr]">
           <div className="flex flex-col gap-5">
             <p className="eyebrow text-brand">About Amaze Expo</p>
@@ -116,7 +116,7 @@ export default function WhyChooseUsPage() {
 
       {/* --------------------------------------------------- Verticals */}
       <section className="bg-ink text-[#F9FAFB]">
-        <div className="shell flex flex-col gap-10 py-16 sm:py-20 lg:py-24">
+        <div className="shell flex flex-col gap-10 py-12 sm:py-14 lg:py-16">
           <SectionHead
             tone="dark"
             title="Exhibitions, retail and museums — one standard of craft"
@@ -189,7 +189,7 @@ export default function WhyChooseUsPage() {
 
       {/* --------------------------------------------------- CTA band */}
       <section className="bg-brand text-white">
-        <div className="shell flex flex-col items-start justify-between gap-6 py-14 lg:flex-row lg:items-center">
+        <div className="shell flex flex-col items-start justify-between gap-6 py-10 lg:flex-row lg:items-center">
           <h2 className="m-0 max-w-2xl text-[1.875rem] leading-[1.2] font-extrabold tracking-tight sm:text-[2.25rem]">
             See what our experience looks like as AI
           </h2>

@@ -37,7 +37,7 @@ export default function HomePage() {
 
       {/* ---------------------------------------------------------- Hero */}
       <section className="bg-ink text-[#F9FAFB]">
-        <div className="shell grid items-center gap-12 py-16 sm:py-20 lg:grid-cols-[1.05fr_1fr] lg:py-24">
+        <div className="shell grid items-center gap-12 py-12 sm:py-14 lg:grid-cols-[1.05fr_1fr] lg:py-16">
           <div className="flex flex-col gap-6">
             <h1 className="text-[2.5rem] leading-[1.04] font-extrabold tracking-tight sm:text-display">
               AI exhibition booth design, from brief to built booth
@@ -89,7 +89,7 @@ export default function HomePage() {
 
       {/* ----------------------------------------------------- Generator */}
       <section id="generator" className="bg-cream scroll-mt-20">
-        <div className="shell flex flex-col gap-10 py-16 sm:py-20 lg:py-24">
+        <div className="shell flex flex-col gap-10 py-12 sm:py-14 lg:py-16">
           <SectionHead
             eyebrow="Try it now"
             title="Your booth in 60 seconds"
@@ -152,7 +152,7 @@ export default function HomePage() {
 
       {/* --------------------------------------------- Render vs reality */}
       <section className="bg-ink text-[#F9FAFB]">
-        <div className="shell flex flex-col gap-8 py-16 sm:py-20 lg:py-24">
+        <div className="shell flex flex-col gap-8 py-12 sm:py-14 lg:py-16">
           <SectionHead
             tone="dark"
             eyebrow="Render vs reality"
@@ -187,31 +187,6 @@ export default function HomePage() {
               </ul>
             </div>
           </div>
-        </div>
-      </Band>
-
-      {/* ------------------------------------------------ How it works */}
-      <Band tone="white">
-        <div className="flex flex-col gap-10">
-          <SectionHead eyebrow="How it works" title="Six steps from brief to results" />
-          <ol className="m-0 grid list-none gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6">
-            {PROCESS.map((step) => (
-              <li
-                key={step.n}
-                className={`flex flex-col gap-2 border-t-[3px] pt-4 ${
-                  step.gold ? "border-gold" : "border-brand"
-                }`}
-              >
-                <span className="text-[1.75rem] leading-none font-extrabold text-brand">
-                  {step.n}
-                </span>
-                <b className="text-lg">{step.title}</b>
-                <span className="text-[0.9375rem] leading-relaxed text-ink-soft">
-                  {step.body}
-                </span>
-              </li>
-            ))}
-          </ol>
         </div>
       </Band>
 

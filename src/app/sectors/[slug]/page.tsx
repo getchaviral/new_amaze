@@ -45,7 +45,7 @@ export default async function SectorPage({ params }: Params) {
         ])}
       />
 
-      <Band tone="cream" className="!py-14">
+      <Band tone="cream" className="!py-10">
         <nav aria-label="Breadcrumb" className="mb-5 text-sm text-ink-mute">
           <ol className="m-0 flex list-none flex-wrap gap-2">
             <li>
@@ -73,7 +73,7 @@ export default async function SectorPage({ params }: Params) {
         </div>
       </Band>
 
-      <Band tone="white" className="!py-14">
+      <Band tone="white" className="!py-10">
         <div className="grid gap-10 lg:grid-cols-[1.2fr_1fr]">
           <MediaSlot
             label={`Real ${sector.name.toLowerCase()} booth we built`}
