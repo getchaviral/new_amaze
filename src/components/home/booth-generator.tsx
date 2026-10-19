@@ -2,19 +2,15 @@
 
 import Image from "next/image";
 import { useEffect, useState, useSyncExternalStore } from "react";
-import { GENERATOR_GROUPS } from "@/lib/site";
-import { PillGroup } from "@/components/ui/choice";
 
 import home01 from "@/assets/hero/home01.png";
 import home02 from "@/assets/hero/home02.png";
-import home03 from "@/assets/hero/home03.jpeg";
-import home04 from "@/assets/hero/home04.jpg";
+import home03 from "@/assets/hero/home03.png";
+import home04 from "@/assets/hero/home04.png";
 import home05 from "@/assets/hero/home05.png";
 import home06 from "@/assets/hero/home06.png";
 
-type Key = (typeof GENERATOR_GROUPS)[number]["key"];
-
-/** Built work, cycled beside the four choices. */
+/** Built work, cycled through a photographic showcase. */
 const SLIDES = [
   {
     src: home01,
@@ -60,25 +56,15 @@ function getServerSnapshot() {
 }
 
 /**
- * "Your booth in 60 seconds" — four choices on the left, a rotating wall of
- * built work on the right.
- *
- * The choices are held in a plain `useState` object so a change re-renders in
- * one pass with no loading state. The carousel advances itself every 3.6s but
+ * A photographic showcase of built work. It advances itself every 3.6 seconds,
  * yields to anyone who hovers or focuses it, and stops entirely under
  * `prefers-reduced-motion`, where the crossfade is suppressed too rather than
  * silently swapping images behind the user.
  */
 export function BoothGenerator() {
-  const [choices, setChoices] = useState<Record<string, string>>(() =>
-    Object.fromEntries(GENERATOR_GROUPS.map((g) => [g.key, g.default])),
-  );
   const [active, setActive] = useState(0);
   const [paused, setPaused] = useState(false);
   const reducedMotion = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
-
-  const set = (key: Key) => (value: string) =>
-    setChoices((prev) => ({ ...prev, [key]: value }));
 
   useEffect(() => {
     if (paused || reducedMotion) return;
@@ -100,56 +86,40 @@ export function BoothGenerator() {
   };
 
   return (
-    <div className="grid gap-8 lg:grid-cols-[1.15fr_1fr]">
-      {/* choices */}
-      <div className="flex flex-col gap-7 rounded-[22px] bg-white p-6 shadow-card sm:p-8">
-        {GENERATOR_GROUPS.map((group) => (
-          <PillGroup
-            key={group.key}
-            legend={`${GENERATOR_GROUPS.indexOf(group) + 1} · ${group.legend}`}
-            options={group.options}
-            value={choices[group.key]}
-            onChange={set(group.key)}
+    <div
+      className="mx-auto flex w-full max-w-5xl flex-col rounded-[22px] bg-white p-3 shadow-card"
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
+      onFocusCapture={() => setPaused(true)}
+      onBlurCapture={() => setPaused(false)}
+    >
+      <div className="relative min-h-[320px] flex-1 overflow-hidden rounded-[14px] bg-slate-deep sm:min-h-[420px] lg:min-h-[520px]">
+        {SLIDES.map((item, i) => (
+          <Image
+            key={item.alt}
+            src={item.src}
+            alt={item.alt}
+            fill
+            sizes="(max-width: 1024px) 100vw, 42vw"
+            priority={i === 0}
+            className={slide(i)}
           />
         ))}
-      </div>
 
-      {/* built work, cycling */}
-      <div
-        className="flex flex-col rounded-[22px] bg-white p-3 shadow-card"
-        onMouseEnter={() => setPaused(true)}
-        onMouseLeave={() => setPaused(false)}
-        onFocusCapture={() => setPaused(true)}
-        onBlurCapture={() => setPaused(false)}
-      >
-        <div className="relative min-h-[280px] flex-1 overflow-hidden rounded-[14px] bg-slate-deep">
-          {SLIDES.map((item, i) => (
-            <Image
-              key={item.alt}
-              src={item.src}
-              alt={item.alt}
-              fill
-              sizes="(max-width: 1024px) 100vw, 42vw"
-              priority={i === 0}
-              className={slide(i)}
-            />
-          ))}
-
-          <div className="absolute inset-x-0 bottom-0 flex justify-center p-3">
-            <div className="flex items-center gap-1.5 rounded-full bg-ink/55 px-2.5 py-1.5 backdrop-blur-sm">
-              {SLIDES.map((item, i) => (
-                <button
-                  key={item.alt}
-                  type="button"
-                  onClick={() => setActive(i)}
-                  aria-label={`Show image ${i + 1} of ${SLIDES.length}`}
-                  aria-current={i === active}
-                  className={`h-1.5 rounded-full transition-all duration-300 ${
-                    i === active ? "w-5 bg-gold" : "w-1.5 bg-white/55 hover:bg-white"
-                  }`}
-                />
-              ))}
-            </div>
+        <div className="absolute inset-x-0 bottom-0 flex justify-center p-3">
+          <div className="flex items-center gap-1.5 rounded-full bg-ink/55 px-2.5 py-1.5 backdrop-blur-sm">
+            {SLIDES.map((item, i) => (
+              <button
+                key={item.alt}
+                type="button"
+                onClick={() => setActive(i)}
+                aria-label={`Show image ${i + 1} of ${SLIDES.length}`}
+                aria-current={i === active}
+                className={`h-1.5 rounded-full transition-all duration-300 ${
+                  i === active ? "w-5 bg-gold" : "w-1.5 bg-white/55 hover:bg-white"
+                }`}
+              />
+            ))}
           </div>
         </div>
       </div>

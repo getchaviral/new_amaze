@@ -6,28 +6,23 @@ import { useEffect, useState } from "react";
 const images = [
   {
     src: "/booth-gallery/ai-03.png",
-    title: "ICAPE Group",
-    alt: "Blue and white ICAPE Group exhibition booth",
+    alt: "Blue and white exhibition booth with a prominent company display",
   },
   {
     src: "/booth-gallery/ai-05.png",
-    title: "SSS Defence",
-    alt: "Illuminated SSS Defence exhibition booth",
+    alt: "Illuminated exhibition booth with a dark display wall",
   },
   {
     src: "/booth-gallery/ai-06.png",
-    title: "Intas",
-    alt: "Blue and white Intas exhibition booth",
+    alt: "Blue and white exhibition booth with a bright reception counter",
   },
   {
     src: "/booth-gallery/ai-09.png",
-    title: "Dhumal",
-    alt: "Dark Dhumal exhibition booth",
+    alt: "Dark exhibition booth with illuminated product displays",
   },
   {
     src: "/booth-gallery/ai-10.png",
-    title: "Yokohama and Galaxy",
-    alt: "Automotive exhibition booth featuring Yokohama and Galaxy displays",
+    alt: "Automotive exhibition booth with tire and product displays",
   },
 ];
 
@@ -104,21 +99,13 @@ export function HeroShowcase() {
       </div>
 
       <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-3 bg-gradient-to-t from-black/85 via-black/40 to-transparent px-4 pt-16 pb-4 sm:px-5 sm:pb-5">
-        <div className="min-w-0">
-          <p className="mb-1 text-[0.625rem] font-bold tracking-[0.16em] text-white/75 uppercase">
-            Exhibition design
-          </p>
-          <h2 className="m-0 truncate text-lg font-bold tracking-tight text-white drop-shadow sm:text-xl">
-            {images[active].title}
-          </h2>
-        </div>
         <div className="flex shrink-0 items-center gap-1.5" role="group" aria-label="Choose a booth">
           {images.map((image, index) => (
             <button
               key={image.src}
               type="button"
               onClick={() => setActive(index)}
-              aria-label={`Show ${image.title} booth`}
+              aria-label={`Show booth image ${index + 1}`}
               aria-pressed={active === index}
               className={`h-2 rounded-full transition-all duration-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white ${
                 active === index ? "w-6 bg-white" : "w-2 bg-white/55 hover:bg-white/85"
