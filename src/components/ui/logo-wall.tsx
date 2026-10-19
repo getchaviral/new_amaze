@@ -1,7 +1,7 @@
 import Image from "next/image";
 
 import microlit from "@/assets/clients/microlit.png";
-import sssDefence from "@/assets/clients/sss-defence.png";
+import sssDefence from "@/assets/clients/sss-defence-lockup.png";
 import royalCanin from "@/assets/clients/royalcanin.svg";
 import schiebel from "@/assets/clients/schiebel.png";
 import pragati from "@/assets/clients/pragati.png";
@@ -27,7 +27,7 @@ export function LogoWall() {
               alt={client.alt}
               width={240}
               height={74}
-              className="h-auto max-h-9 w-auto max-w-[85%] object-contain sm:max-h-10"
+              className="h-auto max-h-11 w-auto max-w-[92%] object-contain sm:max-h-12"
             />
           </div>
         </li>
