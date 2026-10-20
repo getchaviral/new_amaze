@@ -133,8 +133,8 @@ export const HOME_PLANS = [
   {
     name: "AMAZE ONE",
     badge: "",
-    price: "₹1,199",
-    per: "One-time purchase",
+    price: "₹999",
+    per: "One-time purchase · plus GST",
     for: "For one professional booth concept",
     details: "1 complete design · up to 5 presentation views",
     features: ["Booth dimensions & layout", "Brand and logo integration"],
@@ -145,8 +145,8 @@ export const HOME_PLANS = [
   {
     name: "AMAZE 7",
     badge: "Most popular",
-    price: "₹6,199",
-    per: "₹886 per design · valid 1 month",
+    price: "₹4,999",
+    per: "₹714 per design · plus GST · valid 1 month",
     for: "For exploring multiple concepts and directions",
     details: "7 complete designs · up to 5 views each",
     features: ["Multiple creative directions", "Brand and logo integration"],
@@ -157,8 +157,8 @@ export const HOME_PLANS = [
   {
     name: "AMAZE 24",
     badge: "High volume",
-    price: "₹18,199",
-    per: "₹758 per design · valid 3 months",
+    price: "₹15,199",
+    per: "₹633 per design · plus GST · valid 3 months",
     for: "For teams with multiple booth requirements",
     details: "24 complete designs · up to 5 views each",
     features: ["Multiple projects and exhibitions", "Team evaluation of concepts"],
@@ -192,10 +192,10 @@ export const FAQS = [
 /* ------------------------------------------------------ Why Choose Us -- */
 
 export const WHY_STATS = [
-  { value: "20+", label: "years of exhibition expertise" },
+  { value: "15+", label: "years of exhibition expertise" },
   { value: "850+", label: "booths executed" },
   { value: "75+", label: "years of combined team experience" },
-  { value: "⟨X⟩", label: "exhibitions served", pending: true },
+  { value: "100", label: "booth exhibitions served" },
 ] as const;
 
 export const TIMELINE = [
@@ -330,15 +330,6 @@ export const SECTORS: Sector[] = SECTOR_ROWS.map(([group, name, line]) => ({
   line,
   slug: slugify(name),
 }));
-
-export const SECTOR_GROUPS = [
-  "All",
-  "Industrial",
-  "Technology",
-  "Healthcare & Science",
-  "Consumer",
-  "Government & Culture",
-];
 
 /** Sector-page template copy, from the canvas. */
 export const SECTOR_TEMPLATE = {

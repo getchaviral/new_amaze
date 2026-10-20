@@ -2,16 +2,16 @@
 
 import { useId, useState } from "react";
 import Image from "next/image";
-import { BoothElevation } from "./booth";
+import sssDefenceBuilt from "@/assets/why/why_choose_hero_02.png";
 
 const sssDefenceBooth = "/booth-gallery/sss-defence.png";
 
 /**
  * Drag between the AI concept and the finished booth.
  *
- * Both layers are the same drawing, so the split reads as one booth resolving
- * from wireframe into build. Keyboard operable through the underlying range
- * input, which stays in the tab order and carries the accessible name.
+ * Compare the SSS Defence concept against the completed booth photo. Keyboard
+ * operable through the underlying range input, which stays in the tab order
+ * and carries the accessible name.
  */
 export function CompareSlider() {
   const [split, setSplit] = useState(50);
@@ -23,9 +23,16 @@ export function CompareSlider() {
         className="relative mx-auto aspect-[4/3] w-full overflow-hidden rounded-[22px] border border-white/10 bg-slate-deep"
         style={{ width: "min(100%, 104svh)" }}
       >
-        {/* built booth visualization — full width underneath */}
+        {/* Finished booth photo — full width underneath */}
         <div className="absolute inset-0">
-          <BoothElevation variant="built" className="size-full" showDimensions={false} />
+          <Image
+            src={sssDefenceBuilt}
+            alt="Completed SSS Defence exhibition booth on the show floor"
+            fill
+            sizes="(max-width: 1024px) 100vw, 80vw"
+            className="object-cover"
+            priority
+          />
         </div>
 
         {/* SSS Defence concept image — clipped from the left */}
@@ -81,10 +88,6 @@ export function CompareSlider() {
         />
       </div>
 
-      <p className="mx-auto mt-1 w-full text-sm text-mist" style={{ width: "min(100%, 104svh)" }}>
-        One drawing, two states. Six concept-to-built pairs ship with real photography at
-        the same camera angle.
-      </p>
     </div>
   );
 }

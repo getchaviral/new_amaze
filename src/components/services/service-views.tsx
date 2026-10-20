@@ -48,7 +48,7 @@ export function ServicesShowcase() {
   useEffect(() => {
     const timer = window.setInterval(() => {
       setActive((current) => (current + 1) % SHOWCASE.length);
-    }, 4500);
+    }, 2000);
     return () => window.clearInterval(timer);
   }, []);
 
@@ -66,30 +66,18 @@ export function ServicesShowcase() {
           className={`object-cover transition-opacity duration-700 ${index === active ? "opacity-100" : "opacity-0"}`}
         />
       ))}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-black/10" />
-      <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-4 px-5 pb-5 pt-20 text-white sm:px-7 sm:pb-7">
-        <div className="min-w-0">
-          <p className="mb-3 inline-flex rounded-full border border-white/20 bg-black/55 px-3 py-1.5 text-[0.6875rem] font-bold tracking-[0.16em] text-gold uppercase">
-            Booth showcase {active + 1} / {SHOWCASE.length}
-          </p>
-          <h2 className="m-0 text-xl font-extrabold tracking-tight drop-shadow sm:text-2xl">
-            {SHOWCASE[active].title}
-          </h2>
-          <p className="mt-1.5 text-sm font-medium text-white/80 sm:text-base">
-            {SHOWCASE[active].detail}
-          </p>
-          <div className="mt-4 flex items-center gap-2" role="group" aria-label="Choose a booth image">
-            {SHOWCASE.map((slide, index) => (
-              <button
-                key={slide.title}
-                type="button"
-                onClick={() => setActive(index)}
-                aria-label={`Show booth image ${index + 1}`}
-                aria-pressed={active === index}
-                className={`h-2 rounded-full transition-all ${active === index ? "w-8 bg-gold" : "w-2 bg-white/55 hover:bg-white/85"}`}
-              />
-            ))}
-          </div>
+      <div className="absolute inset-x-0 bottom-0 flex items-center justify-between p-4 sm:p-5">
+        <div className="flex items-center gap-2" role="group" aria-label="Choose a booth image">
+          {SHOWCASE.map((slide, index) => (
+            <button
+              key={slide.title}
+              type="button"
+              onClick={() => setActive(index)}
+              aria-label={`Show booth image ${index + 1}`}
+              aria-pressed={active === index}
+              className={`h-2 rounded-full transition-all ${active === index ? "w-8 bg-white" : "w-2 bg-white/65 hover:bg-white"}`}
+            />
+          ))}
         </div>
         <button
           type="button"

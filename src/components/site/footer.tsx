@@ -1,6 +1,6 @@
 import Link from "next/link";
+import Image from "next/image";
 import { NAV, SITE } from "@/lib/site";
-import { AmazeMark } from "@/components/art/booth";
 
 const LEGAL = [
   { href: "#terms", label: "Terms & Conditions" },
@@ -12,11 +12,19 @@ export function Footer() {
   return (
     <footer className="bg-night text-mist">
       <div className="shell flex flex-col gap-6 py-12">
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1.2fr_1.2fr]">
+        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1.4fr]">
           <div className="flex flex-col gap-3">
             <div className="flex items-center gap-2.5">
-              <AmazeMark size={38} />
-              <p className="text-lg font-extrabold tracking-[0.14em] text-white">AMAZE EXPO</p>
+              <span className="grid size-12 shrink-0 place-items-center overflow-hidden rounded-xl bg-white p-1.5">
+                <Image
+                  src="/amaze-logo.png"
+                  alt="AMAZE logo"
+                  width={48}
+                  height={42}
+                  className="h-full w-full object-contain"
+                />
+              </span>
+              <p className="text-lg font-extrabold tracking-[0.14em] text-white">AMZEXPO</p>
             </div>
             <p className="max-w-xs text-[0.9375rem] leading-relaxed">{SITE.tagline}</p>
             <p className="max-w-xs text-[0.8125rem] leading-relaxed text-mist-soft">
@@ -58,26 +66,6 @@ export function Footer() {
             </a>
           </address>
 
-          <div className="flex flex-col gap-3">
-            <p className="text-[0.9375rem] font-bold text-white">Find us on Google</p>
-            <div className="rounded-2xl border border-white/12 bg-white/[0.04] p-4">
-              <div className="flex items-center gap-2">
-                <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true">
-                  <path fill="#4285F4" d="M23 12.3c0-.8-.1-1.6-.2-2.3H12v4.5h6.2a5.3 5.3 0 0 1-2.3 3.5v2.9h3.7c2.2-2 3.4-5 3.4-8.6z" />
-                  <path fill="#34A853" d="M12 24c3.1 0 5.7-1 7.6-2.8l-3.7-2.9c-1 .7-2.3 1.1-3.9 1.1-3 0-5.5-2-6.4-4.7H1.8v3A12 12 0 0 0 12 24z" />
-                  <path fill="#FBBC05" d="M5.6 14.7a7.2 7.2 0 0 1 0-4.6v-3H1.8a12 12 0 0 0 0 10.6z" />
-                  <path fill="#EA4335" d="M12 4.8c1.7 0 3.2.6 4.4 1.7l3.3-3.3A11.6 11.6 0 0 0 12 0 12 12 0 0 0 1.8 6.1l3.8 3c.9-2.8 3.4-4.3 6.4-4.3z" />
-                </svg>
-                <p className="font-bold text-white">Amaze Expo</p>
-              </div>
-              <a
-                href="#google-profile"
-                className="mt-3 inline-block text-sm font-semibold text-gold no-underline hover:underline"
-              >
-                Read reviews on Google →
-              </a>
-            </div>
-          </div>
         </div>
 
         <div className="flex flex-col justify-between gap-4 border-t border-white/10 pt-5 text-[0.8125rem] text-mist-soft sm:flex-row sm:items-center">

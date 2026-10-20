@@ -67,7 +67,7 @@ export default function OpengraphImage() {
           </div>
           <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
             <div style={{ width: "10px", height: "10px", borderRadius: "999px", backgroundColor: "#D4A037" }} />
-            20+ years of experience
+            15+ years of experience
           </div>
           <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
             <div style={{ width: "10px", height: "10px", borderRadius: "999px", backgroundColor: "#D4A037" }} />

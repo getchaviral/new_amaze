@@ -39,7 +39,7 @@ const SLIDES = [
 ];
 
 /** How long each image holds before the next one arrives. */
-const INTERVAL_MS = 3600;
+const INTERVAL_MS = 2000;
 
 function subscribe(onChange: () => void) {
   const mq = window.matchMedia("(prefers-reduced-motion: reduce)");

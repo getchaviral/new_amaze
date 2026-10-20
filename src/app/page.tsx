@@ -53,7 +53,7 @@ export default function HomePage() {
               </Link>
             </div>
             <p className="text-[0.9375rem] text-mist">
-              20+ years of building booths · 850+ booths delivered
+              15+ years of building booths · 850+ booths delivered
             </p>
           </div>
 
@@ -166,7 +166,7 @@ export default function HomePage() {
       <Band tone="white">
         <div className="flex flex-col gap-6">
           <SectionHead
-            title="Plans for exhibitors, agencies and organisers"
+            title="Our Agentic AI offerings for Expo Booth Designers, Agencies & Exhibitors"
             lede="Choose a package that fits your team and the number of booth concepts you need."
           />
           <div className="grid items-stretch gap-5 sm:grid-cols-2 xl:grid-cols-4">

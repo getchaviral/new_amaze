@@ -7,8 +7,9 @@ import {
   TEAM,
   WHY_STATS,
 } from "@/lib/site";
-import { Band, MediaSlot, PhotoGlyph, SectionHead, Stat } from "@/components/ui/kit";
+import { Band, SectionHead, Stat } from "@/components/ui/kit";
 import { Marked } from "@/components/ui/pending";
+import { WhyChooseUsHeroImage } from "@/components/why/hero-image-carousel";
 
 import reasonEndToEnd from "@/assets/why/reason-1.png";
 import reasonTechnology from "@/assets/why/reason-2.png";
@@ -69,12 +70,7 @@ export default function WhyChooseUsPage() {
               India. Every recommendation AMAZE makes carries that experience.
             </p>
           </div>
-          <MediaSlot
-            label="Team on the show floor"
-            detail="Photograph · 1400×1000"
-            className="min-h-[380px]"
-            icon={<PhotoGlyph tone="#8A6A1F" size={52} />}
-          />
+          <WhyChooseUsHeroImage />
         </div>
       </Band>
 
@@ -148,9 +144,10 @@ export default function WhyChooseUsPage() {
           <SectionHead
             eyebrow="Humans + AI"
             title="AI does the heavy lifting. Our people sign it off."
+            className="max-w-none lg:whitespace-nowrap"
           />
-          <ul className="m-0 grid list-none gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            {TEAM.map((person, i) => (
+          <ul className="m-0 grid list-none gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {TEAM.slice(0, 3).map((person, i) => (
               <li key={`${person.name}-${i}`} className="card flex flex-col gap-3 p-5">
                 <div
                   className="grid aspect-square place-items-center rounded-xl border border-line bg-gold-wash"

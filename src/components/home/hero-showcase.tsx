@@ -32,7 +32,7 @@ export function HeroShowcase() {
   useEffect(() => {
     const timer = window.setInterval(() => {
       setActive((current) => (current + 1) % images.length);
-    }, 3500);
+    }, 2000);
 
     return () => window.clearInterval(timer);
   }, []);
@@ -64,10 +64,7 @@ export function HeroShowcase() {
         />
       ))}
 
-      <div className="absolute inset-x-0 top-0 flex items-center justify-between p-4 sm:p-5">
-        <span className="rounded-full border border-white/20 bg-black/35 px-3 py-1.5 text-[0.6875rem] font-bold tracking-[0.14em] text-white uppercase shadow-sm backdrop-blur-md">
-          Booth showcase
-        </span>
+      <div className="absolute inset-x-0 top-0 flex justify-end p-4 sm:p-5">
         <span className="rounded-full border border-white/20 bg-black/35 px-3 py-1.5 text-xs font-semibold tracking-wider text-white tabular-nums shadow-sm backdrop-blur-md">
           {String(active + 1).padStart(2, "0")} / {String(images.length).padStart(2, "0")}
         </span>
