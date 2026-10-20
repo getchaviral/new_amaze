@@ -55,14 +55,6 @@ export function CompareSlider() {
     return () => window.clearInterval(timer);
   }, [manualPause]);
 
-  useEffect(() => {
-    const timer = window.setInterval(() => {
-      setActiveConcept((current) => (current + 1) % concepts.length);
-    }, 4000);
-
-    return () => window.clearInterval(timer);
-  }, []);
-
   useEffect(
     () => () => {
       if (resumeTimer.current !== null) window.clearTimeout(resumeTimer.current);

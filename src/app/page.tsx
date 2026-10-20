@@ -9,12 +9,13 @@ import {
   SKILLS,
   STATS,
 } from "@/lib/site";
-import { Band, MediaSlot, PhotoGlyph, SectionHead, Stat } from "@/components/ui/kit";
+import { Band, SectionHead, Stat } from "@/components/ui/kit";
 import { Accordion } from "@/components/ui/accordion";
 import { LogoWall } from "@/components/ui/logo-wall";
 import { BoothGenerator } from "@/components/home/booth-generator";
 import { CompareSlider } from "@/components/art/compare-slider";
 import { HeroShowcase } from "@/components/home/hero-showcase";
+import { ExperiencePhotoCard } from "@/components/home/experience-photo-card";
 import { FAQ_PAGE, JsonLd } from "@/lib/structured-data";
 
 export const metadata: Metadata = {
@@ -95,19 +96,14 @@ export default function HomePage() {
 
       {/* ---------------------------------------------- Real experience */}
       <Band tone="white">
-        <div className="grid gap-6 lg:grid-cols-[0.85fr_1.15fr]">
+        <div className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
           <div className="flex flex-col gap-6">
             <SectionHead
               eyebrow="Built on real experience"
               title="This isn’t generic AI making up ideas"
               lede="It is our booth design and fabrication experience, made instant. Open any card to see what the AI weighs."
             />
-            <MediaSlot
-              label="Workshop or team on site"
-              detail="Photograph · 1200×900"
-              className="min-h-[240px]"
-              icon={<PhotoGlyph tone="#8A6A1F" size={48} />}
-            />
+            <ExperiencePhotoCard />
           </div>
           <div className="rounded-[22px] border border-line bg-white p-6">
             <Accordion
