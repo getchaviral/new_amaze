@@ -20,15 +20,17 @@ export function LogoWall() {
       {CLIENTS.map((client) => (
         <li key={client.name}>
           <div
-            className="flex h-[76px] items-center justify-center rounded-2xl border border-line bg-white px-4 shadow-[0_2px_10px_rgba(20,27,43,0.035)] transition-transform duration-200 hover:-translate-y-0.5 sm:h-[84px] sm:px-5"
+            className="flex h-[88px] items-center justify-center rounded-2xl border border-line bg-white px-4 shadow-[0_2px_10px_rgba(20,27,43,0.035)] transition-transform duration-200 hover:-translate-y-0.5 sm:h-[96px] sm:px-5"
           >
-            <Image
-              src={client.src}
-              alt={client.alt}
-              width={240}
-              height={74}
-              className="h-auto max-h-11 w-auto max-w-[92%] object-contain sm:max-h-12"
-            />
+            <div className="relative h-14 w-full">
+              <Image
+                src={client.src}
+                alt={client.alt}
+                fill
+                sizes="(max-width: 640px) 42vw, (max-width: 1024px) 28vw, 18vw"
+                className="object-contain"
+              />
+            </div>
           </div>
         </li>
       ))}

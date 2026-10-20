@@ -16,6 +16,7 @@ import { BoothGenerator } from "@/components/home/booth-generator";
 import { CompareSlider } from "@/components/art/compare-slider";
 import { HeroShowcase } from "@/components/home/hero-showcase";
 import { ExperiencePhotoCard } from "@/components/home/experience-photo-card";
+import { DemoVideoButton } from "@/components/home/demo-video-button";
 import { FAQ_PAGE, JsonLd } from "@/lib/structured-data";
 
 export const metadata: Metadata = {
@@ -49,9 +50,7 @@ export default function HomePage() {
               <Link href="/#generator" className="btn btn-primary">
                 Generate your AI booth design
               </Link>
-              <Link href="/#demo" className="btn btn-outlineGold">
-                See demo video
-              </Link>
+              <DemoVideoButton />
             </div>
             <p className="text-[0.9375rem] text-mist">
               15+ years of building booths · 850+ booths delivered
