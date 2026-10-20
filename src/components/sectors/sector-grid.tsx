@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useState } from "react";
@@ -81,14 +83,14 @@ export function SectorGrid() {
                 onClick={() => setActiveImageIndex(index)}
                 aria-label={`Open ${sector.name} image`}
                 aria-haspopup="dialog"
-                className="relative h-[150px] w-full cursor-zoom-in overflow-hidden"
+                className="relative h-[150px] w-full cursor-zoom-in overflow-hidden bg-white"
               >
                 <Image
                   src={SECTOR_IMAGES[index]}
                   alt={`${sector.name} exhibition`}
                   fill
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                  className="object-cover transition-transform duration-300 group-hover:scale-105"
+                  className="object-contain"
                 />
               </button>
               <Link

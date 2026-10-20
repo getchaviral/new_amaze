@@ -49,7 +49,7 @@ export default function HomePage() {
                 Generate your AI booth design
               </Link>
               <Link href="/#demo" className="btn btn-outlineGold">
-                See booth examples
+                See demo video
               </Link>
             </div>
             <p className="text-[0.9375rem] text-mist">
