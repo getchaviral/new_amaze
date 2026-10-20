@@ -103,7 +103,6 @@ export const SKILLS = [
   ["Materials, lighting & finishes", "Textures, light and colour chosen for the brand perception you want."],
   ["Fabrication & buildability", "Structure, materials, power and execution — from screen to show floor."],
   ["Budget & bill of materials", "A cost range and material list from AMAZE, with modular swaps to save money."],
-  ["Show-day & ROI", "Lead capture at the booth and a results report after the show."],
 ].map(([title, body]) => ({ q: title, a: body }));
 
 export const GENERIC_AI = [
