@@ -1,16 +1,36 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import {
   COMMITMENTS,
   REASONS,
   SEO_PAGES,
   TEAM,
-  TIMELINE,
-  VERTICALS,
   WHY_STATS,
 } from "@/lib/site";
 import { Band, MediaSlot, PhotoGlyph, SectionHead, Stat } from "@/components/ui/kit";
 import { Marked } from "@/components/ui/pending";
-import { Timeline } from "@/components/why/timeline";
+
+import reasonEndToEnd from "@/assets/why/reason-1.png";
+import reasonTechnology from "@/assets/why/reason-2.png";
+import reasonExpertise from "@/assets/why/reason-3.png";
+import reasonIndustries from "@/assets/why/reason-4.png";
+import reasonLocations from "@/assets/why/reason-5.png";
+import reasonPartnership from "@/assets/why/reason-6.png";
+
+/**
+ * One illustration per reason, in `REASONS` order. Assets 4 and 5 are crossed
+ * on purpose: file 4 circles the industry sectors, which is the "Deep industry
+ * knowledge" playbooks point, while file 5 circles city landmarks, which is
+ * "Pan-India execution". Taken in file order they would have been swapped.
+ */
+const REASON_IMAGES = [
+  { src: reasonEndToEnd, alt: "Booth process flow from brief and concept through design, approval, fabrication and logistics to show-ready" },
+  { src: reasonTechnology, alt: "AI, virtual reality and cloud tools networked around a digital exhibition booth" },
+  { src: reasonExpertise, alt: "Exhibition booth ringed with completed stands and award, team and quality symbols" },
+  { src: reasonLocations, alt: "Exhibition booth below a globe connecting international city landmarks" },
+  { src: reasonIndustries, alt: "Medical, automotive, retail, fashion, solar and other industry sectors around a glowing globe" },
+  { src: reasonPartnership, alt: "Handshake over booth drawings with a growth chart and completed stand behind" },
+];
 
 export const metadata: Metadata = {
   title: { absolute: SEO_PAGES["/why-choose-us"].title },
@@ -72,14 +92,6 @@ export default function WhyChooseUsPage() {
         </div>
       </section>
 
-      {/* ----------------------------------------------------- Timeline */}
-      <Band tone="white">
-        <div className="flex flex-col gap-6">
-          <SectionHead eyebrow="Our story" title="From the workshop floor to agentic AI" />
-          <Timeline steps={TIMELINE} />
-        </div>
-      </Band>
-
       {/* ---------------------------------------------------- Challenge */}
       <Band tone="cream">
         <div className="grid gap-6 lg:grid-cols-[0.8fr_1.2fr]">
@@ -100,43 +112,35 @@ export default function WhyChooseUsPage() {
       <Band tone="white">
         <div className="flex flex-col gap-6">
           <SectionHead title="Six reasons brands choose Amaze" />
-          <ul className="m-0 grid list-none gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {REASONS.map((reason) => (
-              <li key={reason.title} className="card-quiet flex flex-col gap-2.5 p-6">
-                <h3 className="m-0 text-lg font-bold">{reason.title}</h3>
-                <p className="m-0 text-[0.9375rem] leading-relaxed text-ink-soft">
-                  <Marked>{reason.body}</Marked>
-                </p>
-              </li>
-            ))}
+          <ul className="m-0 grid list-none gap-5 p-0 sm:grid-cols-2 lg:grid-cols-3">
+            {REASONS.map((reason, i) => {
+              const image = REASON_IMAGES[i];
+              return (
+                <li
+                  key={reason.title}
+                  className="card-quiet flex flex-col gap-3.5 overflow-hidden p-0"
+                >
+                  <div className="relative aspect-square w-full overflow-hidden bg-slate-deep">
+                    <Image
+                      src={image.src}
+                      alt={image.alt}
+                      fill
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      className="object-cover"
+                    />
+                  </div>
+                  <div className="flex flex-col gap-2.5 px-6 pb-6">
+                    <h3 className="m-0 text-lg font-bold">{reason.title}</h3>
+                    <p className="m-0 text-[0.9375rem] leading-relaxed text-ink-soft">
+                      <Marked>{reason.body}</Marked>
+                    </p>
+                  </div>
+                </li>
+              );
+            })}
           </ul>
         </div>
       </Band>
-
-      {/* --------------------------------------------------- Verticals */}
-      <section className="bg-ink text-[#F9FAFB]">
-        <div className="shell flex flex-col gap-6 py-10 sm:py-12 lg:py-14">
-          <SectionHead
-            tone="dark"
-            title="Exhibitions, retail and museums — one standard of craft"
-          />
-          <ul className="m-0 grid list-none gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {VERTICALS.map((v) => (
-              <li key={v.title} className="flex flex-col gap-4">
-                <MediaSlot
-                  label={v.photo}
-                  detail="Photograph · 1200×800"
-                  dark
-                  className="h-[220px]"
-                  icon={<PhotoGlyph tone="#D4A037" />}
-                />
-                <h3 className="m-0 text-xl font-bold">{v.title}</h3>
-                <p className="m-0 text-[0.9375rem] leading-relaxed text-mist">{v.body}</p>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
 
       {/* -------------------------------------------------------- Team */}
       <Band tone="cream">
