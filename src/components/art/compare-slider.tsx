@@ -2,7 +2,6 @@
 
 import { useEffect, useId, useRef, useState } from "react";
 import Image from "next/image";
-import concept01 from "@/assets/why/ai_01.png";
 import concept02 from "@/assets/why/ai_02.png";
 import concept03 from "@/assets/why/ai_03.png";
 import concept04 from "@/assets/why/ai_04.png";
@@ -10,7 +9,10 @@ import concept05 from "@/assets/why/ai_05.png";
 
 const sssDefenceBuilt = "/booth-gallery/sss-defence.png";
 const concepts = [
-  { src: concept01, alt: "Vikram Solar exhibition booth AI concept" },
+  {
+    src: "/booth-gallery/WhatsApp%20Image%202026-10-19%20at%2020.20.06.jpeg",
+    alt: "SSS Defence exhibition booth on the show floor",
+  },
   { src: concept02, alt: "Briti Scientific exhibition booth AI concept" },
   { src: concept03, alt: "ICAPE Group exhibition booth AI concept" },
   { src: concept04, alt: "Tarsons exhibition booth AI concept" },
@@ -91,7 +93,7 @@ export function CompareSlider() {
             alt="Completed SSS Defence exhibition booth on the show floor"
             fill
             sizes="(max-width: 1024px) 100vw, 80vw"
-            className="object-contain"
+            className="scale-125 object-contain"
             priority
           />
         </div>
