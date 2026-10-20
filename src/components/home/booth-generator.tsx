@@ -100,7 +100,7 @@ export function BoothGenerator() {
             src={item.src}
             alt={item.alt}
             fill
-            sizes="(max-width: 1024px) 100vw, 42vw"
+            sizes="(max-width: 1024px) 100vw, 1000px"
             priority={i === 0}
             className={slide(i)}
           />

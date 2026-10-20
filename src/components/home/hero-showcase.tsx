@@ -57,7 +57,7 @@ export function HeroShowcase() {
           aria-hidden={active !== index}
           fill
           priority={index === 0}
-          sizes="(max-width: 1024px) 100vw, 50vw"
+          sizes="(max-width: 1024px) 100vw, 640px"
           className={`object-cover transition-opacity duration-700 ${
             active === index ? "opacity-100" : "opacity-0"
           }`}

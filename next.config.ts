@@ -10,6 +10,15 @@ const nextConfig: NextConfig = {
   images: {
     dangerouslyAllowSVG: true,
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
+
+    // No source photograph is wider than ~1672px, yet `sizes` was letting the
+    // two home-page carousels request 3840px. Vercel's optimizer began
+    // answering INVALID_IMAGE_OPTIMIZE_REQUEST for the heaviest of them, which
+    // blanked a slide in production. Capping the generated widths keeps every
+    // request at or below the real source size — and stops a ~550px slot
+    // pulling down a 700KB file it will never display.
+    deviceSizes: [320, 480, 640, 750, 828, 1080, 1200, 1280],
+    imageSizes: [16, 32, 48, 64, 96, 128, 256],
   },
 
   // The old /category/... pages 404 today. The redesign's SEO artboard asks for
