@@ -43,13 +43,13 @@ export function Footer() {
 
           <address className="flex flex-col gap-2.5 text-[0.9375rem] not-italic">
             <p className="mb-1 font-bold text-white">Contact</p>
-            <span>{SITE.cities.join(" · ")}</span>
             <a
               href="mailto:info@amazexpo.com"
               className="text-mist no-underline hover:text-gold"
             >
               info@amazexpo.com
             </a>
+            <span>{SITE.cities.join(" · ")}</span>
             <a
               href={SITE.whatsapp}
               className="mt-1 inline-flex w-fit items-center gap-2 rounded-[10px] bg-whatsapp px-4 py-2.5 font-bold text-night no-underline"

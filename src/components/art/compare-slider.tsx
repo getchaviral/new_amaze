@@ -1,76 +1,23 @@
 "use client";
 
-import { useEffect, useId, useRef, useState } from "react";
+import { useId, useState } from "react";
 import Image from "next/image";
-import concept02 from "@/assets/why/ai_02.png";
-import concept03 from "@/assets/why/ai_03.png";
-import concept04 from "@/assets/why/ai_04.png";
-import concept05 from "@/assets/why/ai_05.png";
 
 const sssDefenceBuilt = "/booth-gallery/sss-defence.png";
-const concepts = [
-  {
-    src: "/booth-gallery/WhatsApp%20Image%202026-10-19%20at%2020.20.06.jpeg",
-    alt: "SSS Defence exhibition booth on the show floor",
-  },
-  { src: concept02, alt: "Briti Scientific exhibition booth AI concept" },
-  { src: concept03, alt: "ICAPE Group exhibition booth AI concept" },
-  { src: concept04, alt: "Tarsons exhibition booth AI concept" },
-  { src: concept05, alt: "SSS Defence exhibition booth AI concept" },
-];
+const concept = {
+  src: "/booth-gallery/WhatsApp%20Image%202026-10-19%20at%2020.20.06.jpeg",
+  alt: "SSS Defence exhibition booth concept",
+};
 
 /**
  * Drag between the AI concept and the finished booth.
  *
- * Compare the SSS Defence concept against the completed booth photo. Keyboard
- * operable through the underlying range input, which stays in the tab order
- * and carries the accessible name.
+ * Compare the SSS Defence concept against the completed booth photo. The
+ * comparison stays still until adjusted with the keyboard-operable range input.
  */
 export function CompareSlider() {
   const [split, setSplit] = useState(50);
-  const [activeConcept, setActiveConcept] = useState(0);
-  const [manualPause, setManualPause] = useState(false);
   const id = useId();
-  const direction = useRef(1);
-  const resumeTimer = useRef<number | null>(null);
-
-  useEffect(() => {
-    if (manualPause) return;
-
-    const timer = window.setInterval(() => {
-      setSplit((current) => {
-        const next = current + direction.current * 0.45;
-        if (next >= 95) {
-          direction.current = -1;
-          return 95;
-        }
-        if (next <= 5) {
-          direction.current = 1;
-          return 5;
-        }
-        return next;
-      });
-    }, 35);
-
-    return () => window.clearInterval(timer);
-  }, [manualPause]);
-
-  useEffect(
-    () => () => {
-      if (resumeTimer.current !== null) window.clearTimeout(resumeTimer.current);
-    },
-    [],
-  );
-
-  const handleManualChange = (value: number) => {
-    setSplit(value);
-    setManualPause(true);
-    if (resumeTimer.current !== null) window.clearTimeout(resumeTimer.current);
-    resumeTimer.current = window.setTimeout(() => {
-      setManualPause(false);
-      resumeTimer.current = null;
-    }, 2500);
-  };
 
   return (
     <div className="flex flex-col gap-2">
@@ -90,24 +37,20 @@ export function CompareSlider() {
           />
         </div>
 
-        {/* AI concept carousel — clipped from the left */}
+        {/* AI concept — clipped from the left */}
         <div
           className="absolute inset-y-0 left-0 overflow-hidden bg-black"
           style={{ width: `${split}%` }}
         >
           <div className="relative h-full" style={{ width: `${(100 / split) * 100}%` }}>
-            {concepts.map((concept, index) => (
-              <Image
-                key={concept.alt}
-                src={concept.src}
-                alt={index === activeConcept ? concept.alt : ""}
-                aria-hidden={index !== activeConcept}
-                fill
-                sizes="(max-width: 1024px) 100vw, 80vw"
-                className={`object-contain transition-opacity duration-700 ${index === activeConcept ? "opacity-100" : "opacity-0"}`}
-                priority={index === 0}
-              />
-            ))}
+            <Image
+              src={concept.src}
+              alt={concept.alt}
+              fill
+              sizes="(max-width: 1024px) 100vw, 80vw"
+              className="object-contain"
+              priority
+            />
           </div>
         </div>
 
@@ -143,21 +86,9 @@ export function CompareSlider() {
           max={95}
           step="any"
           value={split}
-          onChange={(event) => handleManualChange(Number(event.target.value))}
+          onChange={(event) => setSplit(Number(event.target.value))}
           className="h-2 w-[96%] self-center cursor-pointer accent-[#D4A037]"
         />
-      </div>
-      <div className="mx-auto flex items-center justify-center gap-2" role="group" aria-label="Choose an AI booth concept">
-        {concepts.map((concept, index) => (
-          <button
-            key={concept.alt}
-            type="button"
-            onClick={() => setActiveConcept(index)}
-            aria-label={`Show AI concept ${index + 1}`}
-            aria-pressed={activeConcept === index}
-            className={`size-2.5 rounded-full transition-colors ${activeConcept === index ? "bg-gold" : "bg-white/40 hover:bg-white/75"}`}
-          />
-        ))}
       </div>
     </div>
   );
