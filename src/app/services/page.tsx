@@ -17,9 +17,9 @@ export const metadata: Metadata = {
 };
 
 const SERVICE_HIGHLIGHTS = [
-  { name: "Exhibition booth design", icon: "spark" },
-  { name: "Fabrication & installation", icon: "cube" },
-  { name: "Project management", icon: "sliders" },
+  { name: "Conceptualize exhibition booth design", icon: "spark" },
+  { name: "Planning, production, installation and maintenance of exhibition booth", icon: "cube" },
+  { name: "Project Management", icon: "sliders" },
   { name: "Interactive experience support", icon: "grid" },
 ];
 

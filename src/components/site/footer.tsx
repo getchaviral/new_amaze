@@ -43,25 +43,17 @@ export function Footer() {
 
           <address className="flex flex-col gap-2.5 text-[0.9375rem] not-italic">
             <p className="mb-1 font-bold text-white">Contact</p>
-            <span>{SITE.foundedBy}</span>
-            <a href={`tel:${SITE.phoneHref}`} className="font-semibold text-gold no-underline">
-              {SITE.phoneDisplay}
-            </a>
-            <span className="flex flex-wrap gap-x-2">
-              {SITE.emails.map((email) => (
-                <a key={email} href={`mailto:${email}`} className="text-mist no-underline hover:text-gold">
-                  {email}
-                </a>
-              ))}
-            </span>
             <span>{SITE.cities.join(" · ")}</span>
+            <a
+              href="mailto:info@amazexpo.com"
+              className="text-mist no-underline hover:text-gold"
+            >
+              info@amazexpo.com
+            </a>
             <a
               href={SITE.whatsapp}
               className="mt-1 inline-flex w-fit items-center gap-2 rounded-[10px] bg-whatsapp px-4 py-2.5 font-bold text-night no-underline"
             >
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                <path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5.1-1.3A10 10 0 1 0 12 2zm5.5 14c-.2.7-1.3 1.3-1.8 1.3-.5.1-1 .1-1.7-.1-.4-.1-.9-.3-1.5-.6-2.7-1.2-4.4-3.9-4.5-4.1-.1-.2-1-1.4-1-2.6s.6-1.8.9-2.1c.2-.2.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .6l-.4.5c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.1 1 2.1 1.3 2.4 1.4.3.1.4.1.6-.1l.9-1c.2-.2.4-.2.6-.1l2 1c.2.1.4.2.4.3.1.2.1.6 0 1.2z" />
-              </svg>
               Chat on WhatsApp
             </a>
           </address>

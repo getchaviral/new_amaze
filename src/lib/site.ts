@@ -11,7 +11,7 @@ export const SITE = {
   legalName: "Totely India Pvt Ltd",
   product: "Amaze Booth Design Agentic AI",
   url: "https://www.amazexpo.com",
-  tagline: "AI-powered booth design and on-ground execution for exhibitions, retail and museums.",
+  tagline: "Agentic AI for exhibition design, alongside booth production, setup, and maintenance.",
   foundedBy: "Jyotsna Pande",
   phoneDisplay: "+91 80194 55105",
   phoneHref: "+918019455105",
@@ -130,14 +130,14 @@ export const PROCESS = [
 
 export const HOME_PLANS = [
   {
-    name: "AMAZE ONE",
+    name: "AMAZE 1",
     badge: "",
     price: "₹999",
     per: "One-time purchase · plus GST",
     for: "For one professional booth concept",
     details: "1 complete design · up to 5 presentation views",
     features: ["Booth dimensions & layout", "Brand and logo integration"],
-    cta: "Get AMAZE ONE",
+    cta: "Get AMAZE 1",
     href: "/services",
     featured: false,
   },
@@ -146,7 +146,7 @@ export const HOME_PLANS = [
     badge: "Most popular",
     price: "₹4,999",
     per: "₹714 per design · plus GST · valid 1 month",
-    for: "For exploring multiple concepts and directions",
+    for: "For exploring multiple concept designs",
     details: "7 complete designs · up to 5 views each",
     features: ["Multiple creative directions", "Brand and logo integration"],
     cta: "Get AMAZE 7",
@@ -158,7 +158,7 @@ export const HOME_PLANS = [
     badge: "High volume",
     price: "₹15,199",
     per: "₹633 per design · plus GST · valid 3 months",
-    for: "For teams with multiple booth requirements",
+    for: "For agencies and exhibition production houses that need a large volume of concept designs",
     details: "24 complete designs · up to 5 views each",
     features: ["Multiple projects and exhibitions", "Team evaluation of concepts"],
     cta: "Get AMAZE 24",
@@ -170,7 +170,7 @@ export const HOME_PLANS = [
     badge: "",
     price: "Custom",
     per: "Volume-based · contract pricing",
-    for: "For agencies, stand builders, brands and organisers",
+    for: "For agencies and exhibition production houses with multiple team members that want to white-label their concept designs",
     details: "White-label experience with your brand",
     features: ["Multiple users and centralised projects", "Custom workflows and dedicated support"],
     cta: "Talk to us",
@@ -185,7 +185,7 @@ export const FAQS = [
   ["Can I build with my own fabricator?", "Yes. Export the concept and specifications, or let our team build it."],
   ["Can I add my logo, colours and budget?", "Yes. Brand guidelines, colours, budget and layout are part of the brief."],
   ["Is my brief confidential?", "Yes. Briefs and brand files stay private to your account."],
-  ["How is this different from ChatGPT or other AI tools?", "AMAZE was developed on real booth projects, checks venue rules and costs, and our team can build what it designs."],
+  ["How is it different from existing AI tools?", "AMAZE was developed on real booth projects, checks venue rules and costs, and our team can build what it designs."],
 ].map(([q, a]) => ({ q, a }));
 
 /* ------------------------------------------------------ Why Choose Us -- */
@@ -194,7 +194,7 @@ export const WHY_STATS = [
   { value: "15+", label: "years of exhibition expertise" },
   { value: "850+", label: "booths executed" },
   { value: "75+", label: "years of combined team experience" },
-  { value: "100", label: "booth exhibitions served" },
+  { value: "100+", label: "booth exhibitions served globally" },
 ] as const;
 
 export const TIMELINE = [

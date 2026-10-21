@@ -4,7 +4,6 @@ import {
   COMMITMENTS,
   REASONS,
   SEO_PAGES,
-  TEAM,
   WHY_STATS,
 } from "@/lib/site";
 import { Band, SectionHead, Stat } from "@/components/ui/kit";
@@ -41,16 +40,6 @@ export const metadata: Metadata = {
     title: SEO_PAGES["/why-choose-us"].title,
     description: SEO_PAGES["/why-choose-us"].description,
   },
-};
-
-const initials = (name: string) => {
-  const clean = name.replace(/[⟨⟩]/g, "").trim();
-  if (!clean || clean.startsWith("NAME")) return "?";
-  return clean
-    .split(/\s+/)
-    .slice(0, 2)
-    .map((w) => w[0]?.toUpperCase())
-    .join("");
 };
 
 export default function WhyChooseUsPage() {
@@ -134,38 +123,6 @@ export default function WhyChooseUsPage() {
                 </li>
               );
             })}
-          </ul>
-        </div>
-      </Band>
-
-      {/* -------------------------------------------------------- Team */}
-      <Band tone="cream">
-        <div className="flex flex-col gap-6">
-          <SectionHead
-            eyebrow="Humans + AI"
-            title="AI does the heavy lifting. Our people sign it off."
-            className="max-w-none lg:whitespace-nowrap"
-          />
-          <ul className="m-0 grid list-none gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {TEAM.slice(0, 3).map((person, i) => (
-              <li key={`${person.name}-${i}`} className="card flex flex-col gap-3 p-5">
-                <div
-                  className="grid aspect-square place-items-center rounded-xl border border-line bg-gold-wash"
-                  aria-hidden="true"
-                >
-                  <span className="text-4xl font-extrabold text-brand">{initials(person.name)}</span>
-                </div>
-                <h3 className="m-0 text-lg font-bold">
-                  <Marked>{person.name}</Marked>
-                </h3>
-                <p className="m-0 text-sm font-semibold text-brand">
-                  <Marked>{person.role}</Marked>
-                </p>
-                <p className="m-0 text-sm leading-relaxed text-ink-soft">
-                  <Marked>{person.line}</Marked>
-                </p>
-              </li>
-            ))}
           </ul>
         </div>
       </Band>

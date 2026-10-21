@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
-import { BUDGET_BANDS, ENQUIRY_PATHS } from "@/lib/site";
+import { BUDGET_BANDS, ENQUIRY_PATHS, SITE } from "@/lib/site";
 
 const PATHS = ENQUIRY_PATHS.map((p) => ({ ...p }));
 
@@ -178,12 +178,6 @@ export function ContactForm() {
           <div className="flex flex-col gap-2.5 rounded-[20px] bg-ink p-6 text-[#F9FAFB]">
             <h2 className="m-0 text-xl font-bold">Talk to us directly</h2>
             <p className="m-0 text-base leading-relaxed">
-              Jyotsna Pande
-              <br />
-              <a href="tel:+918019455105" className="font-bold text-gold no-underline">
-                +91 80194 55105
-              </a>
-              <br />
               <a href="mailto:jp@amazexpo.com" className="text-[#F9FAFB] no-underline hover:text-gold">
                 jp@amazexpo.com
               </a>{" "}
@@ -192,8 +186,9 @@ export function ContactForm() {
                 info@amazexpo.com
               </a>
             </p>
+            <p className="m-0 text-sm text-mist">{SITE.cities.join(" · ")}</p>
             <a
-              href="https://wa.me/918019455105"
+              href={SITE.whatsapp}
               className="mt-2 inline-flex w-fit items-center gap-2 rounded-[10px] bg-whatsapp px-4 py-2.5 font-bold text-night no-underline"
             >
               <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">

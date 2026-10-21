@@ -178,11 +178,13 @@ export function Header() {
             >
               Generate your AI booth design
             </Link>
-            <p className="mt-3 text-sm text-ink-mute">
-              <a href={`tel:${SITE.phoneHref}`} className="font-semibold text-brand">
-                {SITE.phoneDisplay}
-              </a>
-            </p>
+            <p className="mt-3 text-sm text-ink-mute">{SITE.cities.join(" · ")}</p>
+            <a
+              href={SITE.whatsapp}
+              className="mt-2 inline-flex w-fit rounded-lg bg-whatsapp px-4 py-2.5 font-bold text-night no-underline"
+            >
+              Chat on WhatsApp
+            </a>
           </div>
         ) : null}
       </div>

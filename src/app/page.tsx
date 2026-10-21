@@ -41,11 +41,24 @@ export default function HomePage() {
             <h1 className="text-[2.5rem] leading-[1.04] font-extrabold tracking-tight sm:text-display">
               AI exhibition booth design, from brief to built booth
             </h1>
-            <p className="max-w-xl text-lg leading-relaxed text-mist sm:text-xl">
-              AMAZE, our agentic AI, plans, designs, costs and checks your booth in minutes —
-              then our team builds it. Developed on 1,000+ booth designs and 850+ booths we
-              have actually built.
-            </p>
+            <div className="max-w-xl space-y-3 text-base leading-relaxed text-mist sm:text-lg">
+              <h2 className="m-0 text-xl leading-tight font-bold text-white sm:text-2xl">
+                AI Trained by Real Exhibition Experience
+              </h2>
+              <p className="m-0">
+                Our Agentic AI has been real-world tested across 1,000+ exhibition booth designs
+                and shaped by the experience of 850+ booths actually built.
+              </p>
+              <p className="m-0">
+                Simply complete a structured design brief with your requirements, objectives,
+                brand and space details. Our trained AI Agent understands the brief, interprets
+                your exhibition needs and generates multiple booth design concepts in minutes—not
+                weeks.
+              </p>
+              <p className="m-0 font-bold text-white">
+                From Brief to Booth Design. In Minutes.
+              </p>
+            </div>
             <div className="flex flex-wrap gap-4">
               <Link href="/#generator" className="btn btn-primary">
                 Generate your AI booth design
@@ -82,12 +95,46 @@ export default function HomePage() {
 
       {/* ----------------------------------------------------- Generator */}
       <section id="generator" className="bg-cream scroll-mt-20">
-        <div className="shell grid items-center gap-8 py-10 sm:py-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-12 lg:py-14">
-          <div className="flex flex-col justify-center">
-            <SectionHead
-              eyebrow="What AMAZE does"
-              title="One AI agent for every step of your booth"
-            />
+        <div className="shell grid items-start gap-8 py-10 sm:py-12 lg:grid-cols-[1.1fr_0.9fr] lg:gap-10 lg:py-14">
+          <div className="flex flex-col gap-4">
+            <p className="eyebrow m-0 text-gold-deep">What AMAZE does</p>
+            <h2 className="m-0 text-[2rem] leading-[1.12] font-extrabold tracking-tight sm:text-[2.5rem]">
+              15 Years of Industry Experience. Now Reimagined with Agentic AI.
+            </h2>
+            <div className="flex flex-col gap-4 text-base leading-relaxed text-ink-soft sm:text-lg">
+              <p className="m-0">
+                For the past 15 years, we have been solving the many A Mazes that exhibitors,
+                designers and production teams face when bringing an idea to life—from
+                conceptualization and design to production across exhibitions, retail spaces and
+                museums.
+              </p>
+              <p className="m-0">
+                That experience has given us something that cannot be learned from data alone: a
+                deep understanding of how the industry actually works.
+              </p>
+              <ul className="m-0 flex list-disc flex-col gap-2 pl-6">
+                <li>We understand the briefs.</li>
+                <li>We understand the creative process.</li>
+                <li>
+                  We understand the practical realities of designing and building spaces.
+                </li>
+                <li>
+                  We understand what it takes to turn an idea into a physical experience.
+                </li>
+              </ul>
+              <p className="m-0">
+                Now, we are bringing that industry knowledge into Agentic AI.
+              </p>
+              <p className="m-0">
+                Amaze has developed an AI that works with the way the exhibition industry already
+                works—helping exhibitors, designers and exhibition production houses move from a
+                design brief to compelling conceptual designs faster, smarter and more efficiently.
+              </p>
+              <p className="m-0 font-bold text-ink">
+                We are not just applying AI to exhibition design. We are building AI from the
+                experience of the exhibition industry.
+              </p>
+            </div>
           </div>
           <BoothGenerator />
         </div>
